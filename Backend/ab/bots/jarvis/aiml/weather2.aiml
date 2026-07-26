@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <category>
+        <pattern>I WILL BE VISITING <SET>CITIES</SET> ON <SET>DOW</SET> , <SET>CITIES</SET> ON <SET>DOW</SET></pattern>
+        <template>
+            <srai>
+                WEATHERCHECK2
+                <think>
+                    <set name="loc1"><star index="1"/></set>
+                    <set name="day1"><star index="2"/></set>
+                    <set name="loc2"><star index="3"/></set>
+                    <set name="day2"><star index="4"/></set>
+                </think>
+            </srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>I WILL BE VISITING <SET>CITIES</SET> ON <SET>DOW</SET> AND <SET>CITIES</SET> ON <SET>DOW</SET></pattern>
+        <template>
+            <srai>
+                WEATHERCHECK2
+                <think>
+                    <set name="loc1"><star index="1"/></set>
+                    <set name="day1"><star index="2"/></set>
+                    <set name="loc2"><star index="3"/></set>
+                    <set name="day2"><star index="4"/></set>
+                </think>
+            </srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>WEATHERCHECK2</pattern>
+        <template>
+                weather:<get name="loc1"/>:<get name="day1"/>,<get name="loc2"/>:<get name="day2"/>
+        </template>
+    </category>
+</aiml>

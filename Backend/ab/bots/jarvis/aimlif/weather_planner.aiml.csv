@@ -1,0 +1,9 @@
+0,<SET>CITIES</SET>,*,*,<star/>,weather_planner.aiml
+0,HAVE <SET>CITIES</SET>,*,*,<star/>,weather_planner.aiml
+0,WEATHER TEST,*,*,Weather planner is working correctly!,weather_planner.aiml
+0,WHAT IS * PLUS *,*,*,<srai>CALCULATE <star index="1"/> + <star index="2"/></srai>,weather_planner.aiml
+0,WHAT IS * MINUS *,*,*,<srai>CALCULATE <star index="1"/> - <star index="2"/></srai>,weather_planner.aiml
+0,WHAT IS * TIMES *,*,*,<srai>CALCULATE <star index="1"/> * <star index="2"/></srai>,weather_planner.aiml
+0,WHAT IS * DIVIDED BY *,*,*,<srai>CALCULATE <star index="1"/> / <star index="2"/></srai>,weather_planner.aiml
+0,CALCULATE * * *,*,*,<think>#Newline                <set name="num1"><star index="1"/></set>#Newline                <set name="operator"><star index="2"/></set>#Newline                <set name="num2"><star index="3"/></set>#Newline            </think>#Newline            <srai>PERFORMCALC</srai>,weather_planner.aiml
+0,PERFORMCALC,*,*,CALCULATION_RESULT,weather_planner.aiml

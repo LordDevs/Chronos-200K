@@ -1,24 +1,25 @@
-# Chatbotlearn Project Board Setup
+# Chronos-200K Project Board Setup
 
-Este documento descreve a estrutura do Project Board para o Chatbotlearn.
+Estrutura do Project Board para o Chronos-200K.
 
 ## Colunas do Board
 
-### 1. 🏗️ Core Setup
-Tarefas relacionadas à configuração fundamental (dependências, arquitetura base, banco de dados).
+### 1. Core Setup
+Configuração base: deps, Tomcat/Program AB, estrutura `backend`/`frontend`, metadata do repo.
 
-### 2. ⚙️ In Development  
-Funcionalidades em desenvolvimento ativo (algoritmos, treinamento, integrações).
+### 2. In Development
+Persona AIML Chronos, ExoplanetService (NASA TAP), EvolutionEngine, frontend HUD.
 
-### 3. 🧪 Testing
-Recursos que estão sendo testados (testes unitários, validações, performance).
+### 3. Testing
+Unit tests (MessageHandler, ExoplanetService, TraitCalculator), validação de routing AIML → Java.
 
-### 4. 📤 Deployment
-Tarefas prontas para ir para produção.
+### 4. Deployment
+Demo local, docs (`ARCHITECTURE`, `NASA_API`, `EVOLUTION_RULES`), card no portfolio.
 
 ## Como usar
-- Crie issues/tarefas e adicione ao board
-- Mova as tarefas entre as colunas conforme o progresso
-- Use labels para categorizar (bug, feature, documentation, ml, nlp, etc)
 
-Exemplo de fluxo: Core Setup → In Development → Testing → Deployment
+- Criar issues e adicionar ao board
+- Mover entre colunas conforme o progresso
+- Labels sugeridas: `aiml`, `nasa`, `evolution`, `frontend`, `docs`, `bug`
+
+Fluxo: Core Setup → In Development → Testing → Deployment

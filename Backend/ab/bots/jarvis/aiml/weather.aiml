@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <!-- Initial prompt -->
+    <category>
+        <pattern>HI IM PLANNING A TRIP TO * LOCATIONS IN * DAYS CAN YOU HELP ME PLAN MY CLOTHING REQUIREMENTS</pattern>
+        <template>
+            Hi! I would love to help you plan your clothing. Please tell me the locations you will be visiting and the days you’ll be there. For example, you could say: "I’ll be visiting Paris on Monday, Tokyo on Tuesday, etc."
+        </template>
+    </category>
+
+    <category>
+        <pattern>_ PLANNING *</pattern>
+        <template>
+            Hi! I would love to help you plan your clothing. Please tell me the locations you will be visiting and the days you’ll be there. For example, you could say: "I’ll be visiting Paris on Monday, Tokyo on Tuesday, etc."
+        </template>
+    </category>
+    
+    <!-- Debug -->
+    <category>
+        <pattern>WHAT DID YOU JUST SAY</pattern>
+        <template>
+            I last said: <that/>
+        </template>
+    </category>
+    <category>
+    
+        <pattern>WEATHER *</pattern>
+        <template>weather:<star/></template>
+    </category>
+
+</aiml>

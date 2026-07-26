@@ -1,0 +1,17 @@
+# Build
+Backend/bin/
+*.class
+
+# Secrets / local config
+API_KEY.txt
+.env
+*.local
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db

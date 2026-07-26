@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <category>
+        <pattern>I WILL BE VISITING <SET>CITIES</SET> ON <SET>DOW</SET></pattern>
+        <!-- <that>
+            *CLOTHING*
+        </that> -->
+        <template>
+            <srai>
+                WEATHERCHECK1
+                <think>
+                    <set name="loc1"><star index="1"/></set>
+                    <set name="day1"><star index="2"/></set>
+                </think>
+            </srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>WEATHERCHECK1</pattern>
+        <template>
+            weather:<get name="loc1"/>:<get name="day1"/>
+        </template>
+    </category>
+</aiml>
