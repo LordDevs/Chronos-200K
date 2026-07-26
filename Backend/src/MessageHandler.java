@@ -1,108 +1,64 @@
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import org.alicebot.ab.*;
+import evolution.EvolutionEngine;
+import org.alicebot.ab.Chat;
 
 public class MessageHandler {
     private Chat chat;
+    private final EvolutionEngine evolutionEngine = new EvolutionEngine();
 
-    public MessageHandler(){
+    public MessageHandler() {
     }
 
-    /// Initiate MessageHandler with Web Socket Session
-    public MessageHandler(Chat chat){
+    public MessageHandler(Chat chat) {
         this.chat = chat;
     }
 
     public String processMessage(String message) {
-        StringBuilder response;
+        if (message == null || message.isBlank()) {
+            return "Capitão, canal de voz/texto vazio. Reformule o comando.";
+        }
 
-        String botResponse = chat.multisentenceRespond(message);
+        String trimmed = message.trim();
+        String lower = trimmed.toLowerCase();
+
+        // Direct command bypass (same pattern as legacy weather:)
+        if (lower.startsWith("exoplanet:")) {
+            return handleExoplanet(trimmed.substring("exoplanet:".length()).trim());
+        }
+        if (lower.startsWith("evolve:")) {
+            return handleEvolve(trimmed.substring("evolve:".length()).trim());
+        }
+
+        if (chat == null) {
+            return "⚠️ CHRONOS offline — sessão AIML não inicializada.";
+        }
+
+        String botResponse = chat.multisentenceRespond(trimmed);
         if (botResponse == null) {
-            return "⚠️ I'm having trouble responding right now. Please try again later.";
+            return "⚠️ Estou com interferência no canal. Tente novamente, Capitão.";
         }
 
-        // Simula como se o bot tivesse retornado "weather:..."
-        if (message.toLowerCase().startsWith("weather:")) {
-            botResponse = message;
+        String responseLower = botResponse.toLowerCase();
+        if (responseLower.startsWith("exoplanet:")) {
+            return handleExoplanet(botResponse.substring("exoplanet:".length()).trim());
         }
-
-        if (botResponse.toLowerCase().startsWith("weather:")) {
-            response = new StringBuilder("Forecast for<br>");
-
-            String[] locationDayPairs = botResponse.substring(8).split(",");
-
-            if (locationDayPairs.length > 5) {
-                return "⚠️ Son, five cities is enough to predict the future. Do not rush the time.<br>";
-            }
-
-            for (String pair : locationDayPairs) {
-                String[] parts = pair.split(":");
-                if (parts.length != 2) {
-                    response.append("⚠️ What is this? <strong>")
-                            .append(pair)
-                            .append("</strong>? That’s not how we talk weather here, champ. Use format: <em>city:day</em><br>");
-                    continue;
-                }
-
-                String location = parts[0].trim();
-                String day = parts[1].trim();
-
-                // Converte "today" corretamente
-                Date targetDate = convertDayToDate(day);
-
-                // Validação de data passada
-                Date today = new Date();
-                if (targetDate.before(today)) {
-                    response.append("⚠️ Son, you cannot predict the past. Try again.<br>");
-                    continue;
-                }
-
-                // Capitaliza o nome da cidade para buscar corretamente
-                String normalizedCity = location.substring(0, 1).toUpperCase() + location.substring(1).toLowerCase();
-                WeatherData cityWeather = new WeatherData(normalizedCity, targetDate);
-
-                // Formata a data como "Monday, April 7"
-                SimpleDateFormat prettyFormat = new SimpleDateFormat("EEEE, MMMM d");
-                String formattedDate = prettyFormat.format(targetDate);
-
-                // Monta a resposta final
-                response.append(String.format("%s on %s: ", normalizedCity, formattedDate));
-                response.append(cityWeather.genCloth()).append("<br><br>");
-            }
-
-            return response.toString();
+        if (responseLower.startsWith("evolve:")) {
+            return handleEvolve(botResponse.substring("evolve:".length()).trim());
         }
 
         return botResponse;
     }
 
-    // Convert day string (e.g., "Monday") to a Date relative to today (April 3, 2025)
-    private Date convertDayToDate(String day) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date()); // Set to today: April 3, 2025
-        cal.set(Calendar.HOUR_OF_DAY, 12); // Noon to avoid edge cases
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-        String todayDay = sdf.format(cal.getTime()).toLowerCase();
-        String targetDay = day.trim().toLowerCase();
-
-        int daysToAdd = 0;
-        String[] daysOfWeek = {"sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"};
-        int todayIndex = Arrays.asList(daysOfWeek).indexOf(todayDay);
-        int targetIndex = Arrays.asList(daysOfWeek).indexOf(targetDay);
-
-        if (targetIndex < 0) {
-            return cal.getTime(); // Invalid day, return today
+    private String handleExoplanet(String planetName) {
+        if (planetName == null || planetName.isBlank()) {
+            return "Especifique o corpo: ANALYZE PLANET kepler-442 b";
         }
+        return new ExoplanetService(planetName).formatReport();
+    }
 
-        daysToAdd = (targetIndex - todayIndex + 7) % 7; // Ensure positive difference within a week
-        cal.add(Calendar.DAY_OF_YEAR, daysToAdd);
-
-        return cal.getTime();
+    private String handleEvolve(String tokens) {
+        if (tokens == null || tokens.isBlank()) {
+            return "Formato: EVOLVE gravity 2g water 80 generations 1000";
+        }
+        return evolutionEngine.simulateFromRaw(tokens);
     }
 }

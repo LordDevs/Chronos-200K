@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern>HI</pattern>
+        <template>
+            Capitão. Sou CHRONOS, IA de bordo da nave colonial. Ano 200.000.
+            Posso analisar exoplanetas (ANALYZE PLANET kepler-442 b) ou simular evolução (EVOLVE gravity 2g water 80 generations 1000).
+        </template>
+    </category>
+
+    <category>
+        <pattern>HELLO</pattern>
+        <template><srai>HI</srai></template>
+    </category>
+
+    <category>
+        <pattern>HEY</pattern>
+        <template><srai>HI</srai></template>
+    </category>
+
+    <category>
+        <pattern>WHO ARE YOU</pattern>
+        <template>
+            Sou CHRONOS — computador central da colónia. Cruzo dados astrofísicos com biologia evolutiva para prever como a humanidade deve adaptar-se em mundos extremos.
+        </template>
+    </category>
+
+    <category>
+        <pattern>WHAT CAN YOU DO</pattern>
+        <template>
+            Comandos principais:
+            ANALYZE PLANET &lt;nome&gt; — dados NASA (temp, massa, raio, gravidade, habitabilidade).
+            EVOLVE gravity &lt;Ng&gt; water &lt;pct&gt; generations &lt;n&gt; — previsão evolutiva determinística.
+            SHIP STATUS — telemetria de bordo.
+        </template>
+    </category>
+
+    <category>
+        <pattern>HELP</pattern>
+        <template><srai>WHAT CAN YOU DO</srai></template>
+    </category>
+</aiml>

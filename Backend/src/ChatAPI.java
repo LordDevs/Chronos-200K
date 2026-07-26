@@ -1,29 +1,26 @@
-ackage com.chatbot;
+import java.io.BufferedReader;
+import java.io.IOException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.alicebot.ab.Bot;
+import org.alicebot.ab.Chat;
 
-import java.io.*;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import org.alicebot.ab.*;
-
-// Initialize API for /chat/api
+/** HTTP API for /chat/api */
 public class ChatAPI extends HttpServlet {
     private Bot bot;
     private Chat chat;
 
-    /// Server initialization
     @Override
     public void init() throws ServletException {
-        /// Creates bot
-        bot = new Bot("jarvis", "Backend/ab", "chat");
-        /// Chat handler with bot
+        bot = new Bot("chronos", "Backend/ab", "chat");
         chat = new Chat(bot);
     }
 
-    /// POST method
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        /// Read request body
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         StringBuilder buffer = new StringBuilder();
         BufferedReader reader = request.getReader();
         String line;
@@ -31,22 +28,19 @@ public class ChatAPI extends HttpServlet {
             buffer.append(line);
         }
 
-        String requestBody = buffer.toString();
-
         MessageHandler handler = new MessageHandler(chat);
-        String botResponse = handler.processMessage(requestBody);
+        String botResponse = handler.processMessage(buffer.toString());
 
-        /// Send response back to client
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(botResponse);
     }
 
-    /// GET Method
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("ChatServlet API is active. Use POST to chat.");
+        response.getWriter().write("CHRONOS ChatAPI online. Use POST /chat/api.");
     }
 }

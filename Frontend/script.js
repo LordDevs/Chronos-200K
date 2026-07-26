@@ -1,167 +1,127 @@
-// Use jQuery to select elements
-const messageInput = $('#cityInput'); 
-const sendButton = $('.send-btn');
-const chatMessages = $('.chat-messages');
+(() => {
+  const apiUrl = `${window.location.origin}/chat/api`;
+  const messagesEl = document.getElementById("chat-messages");
+  const form = document.getElementById("chatForm");
+  const input = document.getElementById("chatInput");
+  const linkStatus = document.getElementById("linkStatus");
+  const planetCards = document.getElementById("planetCards");
+  const quickReplies = document.getElementById("quickReplies");
 
-// Websocket setup
-const ws = new WebSocket('ws://localhost:8080/chat');
+  const seedPlanets = ["kepler-442 b", "proxima centauri b", "k2-18 b"];
 
-// Function to add formatted messages
-function addMessage(text, sender) {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${sender}-message mb-3`;
-    
-    // Different formatting for bot and user
-    if(sender === 'bot') {
-        messageDiv.innerHTML = `
-            <div class="card bg-dark text-white border-0">
-                <div class="card-body p-3">
-                    <p class="mb-0">${text.replace(/\n/g, '<br>')}</p>
-                    <small class="text-muted">${new Date().toLocaleTimeString()}</small>
-                </div>
-            </div>
-        `;
+  function appendMessage(html, sender) {
+    const div = document.createElement("div");
+    div.className = `message ${sender}`;
+    if (sender === "bot") {
+      div.innerHTML = html;
     } else {
-        messageDiv.innerHTML = `
-            <div class="card bg-primary text-white border-0">
-                <div class="card-body p-3">
-                    <p class="mb-0">${text}</p>
-                    <small class="text-white-50">${new Date().toLocaleTimeString()}</small>
-                </div>
-            </div>
-        `;
+      div.textContent = html;
     }
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
 
-    chatMessages.append(messageDiv);
-    const messagesContainer = $('.chat-messages')[0];
-    messagesContainer.scrollTo({
-        top: messagesContainer.scrollHeight,
-        behavior: 'smooth'
+  function showTyping() {
+    const typing = document.createElement("div");
+    typing.className = "message bot typing-indicator";
+    typing.innerHTML = "<span></span><span></span><span></span>";
+    messagesEl.appendChild(typing);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return typing;
+  }
+
+  async function postChronos(message) {
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=UTF-8" },
+      body: message,
     });
-}
-
-// WebSocket handlers
-ws.onopen = () => {
-    console.log('Connected to WebSocket server');
-    addMessage('Connected to travel assistant', 'bot');
-}
-
-ws.onmessage = (event) => {
-    addMessage(event.data, 'bot');
-}
-
-ws.onerror = (error) => {
-    addMessage('Connection error: ' + error.message, 'system');
-}
-
-ws.onclose = () => {
-    addMessage('Disconnected from server', 'system');
-}
-
-// Send message function
-function sendMessage() {
-    const userMessage = messageInput.val().trim();
-    if (!userMessage) return;
-
-    addMessage(userMessage, 'user');
-    ws.send(userMessage);
-    messageInput.val('');
-}
-
-sendButton.on('click', () => {
-    const rows = document.querySelectorAll(".city-row");
-    let parts = [];
-
-    rows.forEach(row => {
-        const cityInput = row.querySelector(".message-input");
-        const dateInput = row.querySelector(".date-input");
-
-        const city = cityInput?.value?.trim();
-        const date = dateInput?.value?.trim();
-
-        if(city && date){
-            const day = new Date(date).toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
-            parts.push(`${city.toLowerCase()}:${day}`);
-        }
-    });
-
-    if (parts.length > 0 ){
-        const fullMessge = `weather:${parts.join(",")}`;
-
-        addMessage(fullMessge, 'user'); // Display the message in the chat
-        ws.send(fullMessge);// Send the message to the server
-    } else {
-        alert("Please fill in all fields before sending.");
+    if (!response.ok) {
+      throw new Error("HTTP " + response.status);
     }
-});
+    return response.text();
+  }
 
-messageInput.on('keypress', (e) => {
-    if (e.key === 'Enter') sendMessage();
-});
+  async function sendToChronos(text) {
+    const message = text.trim();
+    if (!message) return;
 
-// Automatic focus on Input field
-$(document).ready(function() {
-    messageInput.focus();
-});
+    appendMessage(message, "user");
+    const typing = showTyping();
 
-document.addEventListener("DOMContentLoaded", () => {
+    try {
+      const reply = await postChronos(message);
+      typing.remove();
+      linkStatus.classList.add("online");
+      appendMessage(reply, "bot");
 
-    messageInput.focus(); // Focus on the input field when the page loads
-
-
-
-    const cityContainer = document.getElementById("cityContainer");
-    const today = new Date().toISOString().split('T')[0];
-
-    // Sets the minimum date to today and future days
-    const applyMinDate = () => {
-        document.querySelectorAll(".date-input").forEach(input => {
-            input.setAttribute("min", today);
-        });
-    };
-
-    applyMinDate(); // Apply the minimum date on load
-
-    let cityCount = 1; // Cities accountant
-  
-    cityContainer.addEventListener("click", function (e) {
-      // Checks if the Add City button has been clicked
-      if (e.target.closest(".add-city-btn")) {
-        const addButton = e.target.closest(".add-city-btn");
-  
-        if (cityCount >= 5) {
-            alert("You can only add up to 5 cities.");
-            return;
-        }
-
-        // Hide the current button
-        addButton.style.display = "none";
-
-
-  
-        // Creates the new city field
-        const newRow = document.createElement("div");
-        newRow.classList.add("city-row");
-  
-        newRow.innerHTML = `
-          <div class="search-container d-flex align-items-center gap-2 mt-2">
-          <input type="text" class="message-input" placeholder="Search for a city...">
-          <input type="date" class="date-input">
-          <button class="add-city-btn btn btn-outline-light">
-            <i class='bx bx-plus'></i>
-          </button>
-        </div>
-      `;
-  
-        // Adds the new field to the interface
-        cityContainer.appendChild(newRow);
-        cityCount++; // Increments the city count
-  
-        // Makes the new button visible
-        const newButton = newRow.querySelector(".add-city-btn");
-        newButton.style.display = "block";
-
-        applyMinDate(); // Apply the minimum date to the new input field
+      const lower = message.toLowerCase();
+      if (lower.includes("planet") || lower.startsWith("exoplanet:") || lower.startsWith("analyze")) {
+        upsertPlanetCard(message, reply);
       }
-    });
-});
+    } catch (err) {
+      typing.remove();
+      linkStatus.classList.remove("online");
+      appendMessage("Link perdido com CHRONOS. Confirme que o backend está em :8080.", "bot");
+      console.error(err);
+    }
+  }
+
+  function upsertPlanetCard(query, rawHtml) {
+    const titleMatch = rawHtml.match(/<strong>(.*?)<\/strong>/i);
+    const name = titleMatch
+      ? titleMatch[1]
+      : query.replace(/analyze planet/i, "").replace(/exoplanet:/i, "").trim();
+    const habitable = /zona habitável/i.test(rawHtml);
+    const hostile = /demasiado|fora da zh/i.test(rawHtml);
+
+    let card = [...planetCards.querySelectorAll(".planet-card")]
+      .find((el) => el.dataset.planet === name);
+    if (!card) {
+      card = document.createElement("article");
+      card.className = "planet-card";
+      card.dataset.planet = name;
+      planetCards.prepend(card);
+    }
+    card.classList.toggle("habitable", habitable);
+    card.classList.toggle("hostile", hostile && !habitable);
+    card.innerHTML = `
+      <h3>${name}</h3>
+      <div class="meta">${new Date().toLocaleTimeString()} · NASA TAP</div>
+      <div class="body">${rawHtml}</div>
+    `;
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const value = input.value;
+    input.value = "";
+    sendToChronos(value);
+  });
+
+  quickReplies.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-cmd]");
+    if (!btn) return;
+    sendToChronos(btn.dataset.cmd);
+  });
+
+  appendMessage(
+    "Sistema CHRONOS inicializado. Canal tático pronto. Use os atalhos ou digite um comando.",
+    "bot"
+  );
+
+  // Prefetch telemetry cards without flooding the chat log
+  seedPlanets.forEach((planet, i) => {
+    setTimeout(async () => {
+      try {
+        const reply = await postChronos(`exoplanet:${planet}`);
+        linkStatus.classList.add("online");
+        upsertPlanetCard(planet, reply);
+      } catch (err) {
+        linkStatus.classList.remove("online");
+        console.warn("Seed planet failed", planet, err);
+      }
+    }, 300 + i * 500);
+  });
+})();

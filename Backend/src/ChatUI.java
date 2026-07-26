@@ -1,31 +1,30 @@
-package com.chatbot;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.*;
-import jakarta.servlet.*;
-import jakarta.servlet.annotation.*;
-import jakarta.servlet.http.*;
+/** Serves static UI under /chat/* (optional path; Tomcat also serves Frontend/ at /). */
+public class ChatUI extends HttpServlet {
 
-@WebServlet
-public class ChatUI extends HttpServlet{
-
-    /// GET Method
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String pathInfo = request.getPathInfo();
-    
-        /// Resolve path info
         if (pathInfo == null || pathInfo.equals("/")) {
             serveFile(response, "index.html");
         } else {
-            String fileName = pathInfo.substring(1);
-            serveFile(response, fileName);
+            serveFile(response, pathInfo.substring(1));
         }
     }
 
-    /// Serve file method
     private void serveFile(HttpServletResponse response, String fileName) throws IOException {
         String content = getStaticFileContent(fileName);
-        if (content != null) { 
+        if (content != null) {
             response.setContentType(getContentType(fileName));
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(content);
@@ -34,11 +33,13 @@ public class ChatUI extends HttpServlet{
         }
     }
 
-    // Method to read static file content from Frontend/
     private String getStaticFileContent(String fileName) throws IOException {
+        // Prefer files from the webapp root (Frontend mapped at /)
         ServletContext context = getServletContext();
-        String realPath = context.getRealPath("/Frontend/" + fileName);
-
+        String realPath = context.getRealPath("/" + fileName);
+        if (realPath == null) {
+            realPath = context.getRealPath("/Frontend/" + fileName);
+        }
         if (realPath == null) {
             return null;
         }
@@ -57,19 +58,16 @@ public class ChatUI extends HttpServlet{
         return null;
     }
 
-    // Method to determine content type based on file extension
     private String getContentType(String fileName) {
         if (fileName.endsWith(".html")) {
             return "text/html";
         } else if (fileName.endsWith(".css")) {
             return "text/css";
         } else if (fileName.endsWith(".js")) {
-            return "text/javascript";
+            return "application/javascript";
         } else if (fileName.endsWith(".png")) {
             return "image/png";
-        } else {
-            return "application/octet-stream"; // Default for unknown types
         }
+        return "application/octet-stream";
     }
 }
-

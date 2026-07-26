@@ -4,8 +4,12 @@ Backend/bin/
 
 # Secrets / local config
 API_KEY.txt
+API_KEY
 .env
 *.local
+
+# Program AB runtime
+Backend/ab/bots/**/logs/
 
 # IDE
 .idea/

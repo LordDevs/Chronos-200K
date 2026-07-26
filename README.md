@@ -15,23 +15,43 @@ Acting as a deep-space colony central computer, the system calculates astrophysi
 
 ---
 
-## 🛠️ Features & Development Checklist
+## Features & Development Checklist
 
 *   [x] **Core Text-Based Analytics Engine:** Processes complex environmental variables and outputs survival probability logs.
 *   [x] **AIML Integration & Predefined Knowledge Bases:** Hybrid architecture combining rule-based astronomical parameters with generative AI flexibility.
 *   [x] **Sci-Fi Tactical UI Prototype:** Dark-mode, terminal-inspired interface reflecting a starship command deck or bio-informatics lab.
-*   [ ] **Adaptive Learning Mode (Next Milestone):** Enabling users to submit raw terraforming and atmospheric data, which the AI curates and stores into the ecosystem.
+*   [x] **ExoplanetService (NASA TAP):** Live lookup of mass, radius, equilibrium temperature, estimated gravity, habitability proxy.
+*   [x] **Adaptive Learning Mode v1 (EvolutionEngine):** Deterministic deep-time trait forecasting from gravity / water / atmosphere / generations.
 *   [ ] **Sub-vocal Speech Command Integration:** Hands-free Voice Input/Output systems designed to mimic astronaut suit telemetry interfaces.
 
 ---
 
-## 📂 Project Architecture
+## Quick start
+
+```bash
+# JDK 17+
+bash run.sh          # or run.bat on Windows
+# open http://localhost:8080/
+```
+
+Try in the HUD: `ANALYZE PLANET kepler-442 b` · `EVOLVE gravity 2g water 80 generations 1000` · `SHIP STATUS`.
+
+Docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/NASA_API.md`](docs/NASA_API.md) · [`docs/EVOLUTION_RULES.md`](docs/EVOLUTION_RULES.md)
+
+---
+
+## Project Architecture
 
 ```text
-├── backend/          # Evolution simulator, prompt engineering matrices & AIML rule sets
-├── frontend/         # Tactical terminal user interface (UI)
-├── run.bat          # Quick-launch script for Windows environments
-└── run.sh           # Quick-launch script for Linux/macOS environments
+├── Backend/
+│   ├── src/                 # ChatAPI, MessageHandler, ExoplanetService
+│   ├── src/evolution/       # EvolutionEngine + trait rules
+│   ├── ab/bots/chronos/     # AIML persona & command routing
+│   └── lib/                 # Program AB, Tomcat, Jakarta
+├── Frontend/                # Tactical HUD UI
+├── docs/
+├── run.bat
+└── run.sh
 ```
 
 ---
