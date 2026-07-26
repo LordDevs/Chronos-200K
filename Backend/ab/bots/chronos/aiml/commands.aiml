@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <!-- Exoplanet analysis routing → Java ExoplanetService -->
+    <category>
+        <pattern>ANALYZE PLANET *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ANALYSE PLANET *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>EXOPLANET *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>CONDITIONS ON *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>WHAT ARE THE CONDITIONS ON *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>QUAIS AS CONDICOES DE *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <!-- Evolution routing → Java EvolutionEngine -->
+    <category>
+        <pattern>EVOLVE GRAVITY * WATER * GENERATIONS *</pattern>
+        <template>evolve:<star index="1"/>:<star index="2"/>:<star index="3"/></template>
+    </category>
+
+    <category>
+        <pattern>EVOLVE * G * WATER * GENERATIONS *</pattern>
+        <template>evolve:<star index="1"/>g:<star index="3"/>:<star index="4"/></template>
+    </category>
+
+    <category>
+        <pattern>EVOLVE *</pattern>
+        <template>evolve:<star/></template>
+    </category>
+
+    <category>
+        <pattern>LEARNING MODE *</pattern>
+        <template>evolve:<star/></template>
+    </category>
+
+    <category>
+        <pattern>MODO EVOLUCAO *</pattern>
+        <template>evolve:<star/></template>
+    </category>
+</aiml>

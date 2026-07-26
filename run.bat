@@ -1,21 +1,11 @@
 @echo off
+setlocal
 
-REM Check if API_KEY.txt exists and has content
-if not exist API_KEY.txt (
-    set /p API_KEY="Enter your API key: "
-    echo %API_KEY% > API_KEY.txt
-    echo API key saved to API_KEY.txt
-) else (
-    echo Using existing API key from API_KEY.txt
-    set /p API_KEY=<API_KEY.txt
-)
-
-echo Compiling Java files...
+echo Compiling Chronos-200K Java sources...
 set CLASSPATH=./Backend/lib/*
-set JAVAFILES=./Backend/src/*.java
+if not exist Backend\bin mkdir Backend\bin
+javac -cp "%CLASSPATH%" Backend\src\*.java Backend\src\evolution\*.java -d Backend\bin
+if errorlevel 1 exit /b 1
 
-javac -cp "%CLASSPATH%" %JAVAFILES% -d ./Backend/bin
-
-REM Run server
-echo Starting server...
+echo Starting Tomcat on :8080 ...
 java -cp "./Backend/bin;%CLASSPATH%" ServletMain

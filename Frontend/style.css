@@ -1,410 +1,322 @@
-/* ===== Light Theme Weather Widget + Website CSS ===== */
-
-/* GLOBAL */
- body, html {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
-      background-size: cover;
-      color: #333;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      
-    }
-  
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .bx-search{
-      background: #0080ff;
-      border: 50%;
-      padding: 10px 16px;
-      border-radius: 8px;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .content {
-      position: relative;
-      z-index: 2;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .content h1 {
-      font-size: 3rem;
-      font-weight: bold;
-    }
-
-    .content p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-    .search-bar {
-      max-width: 600px;
-      width: 100%;
-      background-color: white;
-      border-radius: 30px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    .search-bar input {
-      border: none;
-      padding: 15px 20px;
-      flex: 1;
-      font-size: 16px;
-      outline: none;
-    }
-
-    .search-bar button {
-      background: #007bff;
-      border: none;
-      padding: 15px 20px;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    .chat-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #00c9a7;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 28px;
-      color: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 10;
-    }
-
-header {
-  background: #0080ff;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+:root {
+  --bg-0: #070d12;
+  --bg-1: #0d1822;
+  --cyan: #3de0c5;
+  --amber: #e0a33d;
+  --text: #c8d6e0;
+  --muted: #6b8494;
+  --danger: #ff6b6b;
+  --panel: rgba(10, 22, 32, 0.82);
+  --line: rgba(61, 224, 197, 0.35);
+  --font-display: "Orbitron", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
-main {
-  flex: 1;
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--text);
+  font-family: var(--font-mono);
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(61, 224, 197, 0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(224, 163, 61, 0.08), transparent 50%),
+    linear-gradient(160deg, var(--bg-0), var(--bg-1) 55%, #081018);
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.hud-frame {
+  pointer-events: none;
+  position: fixed;
+  inset: 12px;
+  border: 1px solid var(--line);
+  box-shadow: inset 0 0 40px rgba(61, 224, 197, 0.06);
+  z-index: 5;
+}
+
+.hud-frame::before,
+.hud-frame::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--cyan);
+}
+
+.hud-frame::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.hud-frame::after {
+  right: -1px;
+  bottom: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.scanlines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  opacity: 0.07;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 2px,
+    rgba(0, 0, 0, 0.4) 2px 3px
+  );
+  animation: flicker 6s infinite;
+}
+
+@keyframes flicker {
+  0%, 97%, 100% { opacity: 0.07; }
+  98% { opacity: 0.12; }
+}
+
+.bridge-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2.5rem 1.25rem 1rem;
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  letter-spacing: 0.12em;
+  color: var(--cyan);
+  text-shadow: 0 0 24px rgba(61, 224, 197, 0.35);
+  animation: bootIn 0.8s ease-out;
+}
+
+.tagline {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  animation: bootIn 1s ease-out 0.15s both;
+}
+
+@keyframes bootIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.bridge {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.25rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem 2.5rem;
+}
+
+@media (max-width: 840px) {
+  .bridge {
+    grid-template-columns: 1fr;
+  }
+  .hud-frame {
+    inset: 6px;
+  }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(6px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  min-height: 420px;
+  animation: bootIn 1s ease-out 0.25s both;
+}
+
+.panel-title {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 40px 20px;
-  text-align: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--amber);
 }
 
-main h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-main p {
-  font-size: 1.2rem;
-  color: #555;
-  max-width: 600px;
-}
-/* WEATHER CARDS */
-
-.featured-cities {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(6px);
-  border-radius: 12px;
-  margin: 40px auto 20px;
-  padding: 20px 0;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-/* === Weather Info Card Cinematic Style === */
-.weather-details-card {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  padding: 30px 25px;
-  color: #003366;
-  font-family: 'Segoe UI', sans-serif;
-  max-width: 350px;
-  width: 100%;
-  margin: 20px auto;
-  animation: fadeSlideIn 0.6s ease-out;
-}
-.weather-details-card h3 {
-  font-size: 1.6rem;
-  margin-bottom: 5px;
-}
-.weather-details-card small {
-  color: #666;
-  display: block;
-  margin-bottom: 15px;
+.status-dot {
+  color: var(--muted);
   font-size: 0.9rem;
 }
-.weather-details-card .temp {
-  font-size: 3.2rem;
-  font-weight: bold;
-  color: #0080ff;
-}
-.weather-details-card .realfeel {
-  font-size: 1rem;
-  color: #444;
-  margin-bottom: 10px;
-}
-.weather-details-card .description {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  color: #222;
-}
-.weather-details-card .more-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  font-size: 0.95rem;
-  color: #444;
-}
 
-.weather-details-card .more-info span {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.weather-details-card .more-info i {
-  color: #007bff;
-  font-size: 1.1rem;
-}
-/* Animation */
-@keyframes fadeSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-.weather-card {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(6px);
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  min-width: 220px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-.weather-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
-}
-
-.weather-card h4 {
-  font-size: 1.3rem;
-  margin-bottom: 5px;
-}
-
-.weather-card p {
-  font-size: 1rem;
-  color: #333;
-}
-
-.weather-card h3 {
-  font-size: 1.8rem;
-  margin-top: 10px;
-  color: #0080ff;
-}
-
-
-/* CHAT WIDGET */
-#chat-widget {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 320px;
-  height: 450px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  z-index: 999;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-#chat-header {
-  background: #0080ff;
-  color: white;
-  padding: 12px 16px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-#chat-messages {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  gap: 12px;
-  height: 300px;
-  overflow-y: auto;
-  background: #f5f9ff;
-}
-
-#chat-input {
-  display: flex;
-  border-top: 1px solid #ddd;
-  background: #fff;
-}
-
-#chat-input input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-}
-
-#chat-input button {
-  background: #0080ff;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.2s;
-}
-
-#chat-input button:hover {
-  background: #006ad1;
-}
-
-/* Base style for messages */
-.message {
-  padding: 12px 16px;
-  border-radius: 18px;
-  margin-bottom: 10px;
-  max-width: 80%;
-  width: fit-content;
-  animation: fadeInUp 0.3s ease;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  line-height: 1.4;
-}
-
-/* User messages */
-.message.user {
-  align-self: flex-end;
-  background: #0080ff;
-  color: white;
-  border-top-right-radius: 4px;
-}
-
-/* Bot messages */
-.message.bot {
-  align-self: flex-start;
-  background: #e6f0ff;
-  color: #004477;
-  border-top-left-radius: 4px;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/*Responsividade*/
-@media (max-width: 480px) {
-  #chat-widget {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-    bottom: 0;
-    right: 0;
-  }
-  .weather-card{
-    width: 90%;
-  }
-}
-
-
-#chat-widget.hidden {
-  transform: scale(0.8);
-  opacity: 0;
-  pointer-events: none;
-}
-
-/*keep the balloon clickable.*/
-.hidden {
-  display: none !important;
-}
-
-#chatToggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #0080ff;
-  color: white;
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-  cursor: pointer;
-  z-index: 999;
+.status-dot.online {
+  color: var(--cyan);
   animation: pulse 2s infinite;
-  font-size: 24px;
-}
-
-#chatToggle:hover {
-  background: #006ad1;
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(0, 128, 255, 0.5);
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-  100% { transform: scale(1); }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
 }
 
-
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 380px;
+}
+
+.message {
+  max-width: 92%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  border: 1px solid transparent;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: rgba(224, 163, 61, 0.12);
+  border-color: rgba(224, 163, 61, 0.4);
+  color: #f0d9a8;
+}
+
+.message.bot {
+  align-self: flex-start;
+  background: rgba(61, 224, 197, 0.08);
+  border-color: var(--line);
+}
+
+.message.bot.typing-indicator {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  min-width: 48px;
+}
+
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: blink 1.2s infinite;
+}
+
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.2; }
+  40% { opacity: 1; }
+}
+
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0 1rem 0.75rem;
+}
+
+.quick-replies button {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--line);
+  padding: 0.4rem 0.65rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.quick-replies button:hover {
+  background: rgba(61, 224, 197, 0.15);
+}
+
+.chat-input-row {
+  display: flex;
+  border-top: 1px solid var(--line);
+}
+
+.chat-input-row input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.35);
+  border: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.85rem 1rem;
+  outline: none;
+}
+
+.chat-input-row button {
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  background: var(--cyan);
+  color: #041016;
+  border: none;
+  padding: 0 1.25rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.chat-input-row button:hover {
+  filter: brightness(1.08);
+}
+
+.planet-cards {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-y: auto;
+  max-height: 480px;
+}
+
+.planet-card {
+  border: 1px solid var(--line);
+  padding: 0.85rem;
+  background: rgba(0, 0, 0, 0.25);
+  animation: bootIn 0.5s ease-out;
+}
+
+.planet-card h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--cyan);
+  letter-spacing: 0.06em;
+}
+
+.planet-card .meta {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.planet-card .body {
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.planet-card.habitable {
+  border-color: rgba(61, 224, 197, 0.65);
+}
+
+.planet-card.hostile {
+  border-color: rgba(255, 107, 107, 0.45);
+}

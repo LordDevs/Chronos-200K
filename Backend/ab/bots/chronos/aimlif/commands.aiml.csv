@@ -1,0 +1,12 @@
+0,ANALYZE PLANET *,*,*,exoplanet:<star/>,commands.aiml
+0,ANALYSE PLANET *,*,*,exoplanet:<star/>,commands.aiml
+0,EXOPLANET *,*,*,exoplanet:<star/>,commands.aiml
+0,CONDITIONS ON *,*,*,exoplanet:<star/>,commands.aiml
+0,WHAT ARE THE CONDITIONS ON *,*,*,exoplanet:<star/>,commands.aiml
+0,QUAIS AS CONDICOES DE *,*,*,exoplanet:<star/>,commands.aiml
+0,ANALYZE *,*,*,exoplanet:<star/>,commands.aiml
+0,EVOLVE GRAVITY * WATER * GENERATIONS *,*,*,evolve:<star index="1"/>:<star index="2"/>:<star index="3"/>,commands.aiml
+0,EVOLVE * G * WATER * GENERATIONS *,*,*,evolve:<star index="1"/>g:<star index="3"/>:<star index="4"/>,commands.aiml
+0,EVOLVE *,*,*,evolve:<star/>,commands.aiml
+0,LEARNING MODE *,*,*,evolve:<star/>,commands.aiml
+0,MODO EVOLUCAO *,*,*,evolve:<star/>,commands.aiml

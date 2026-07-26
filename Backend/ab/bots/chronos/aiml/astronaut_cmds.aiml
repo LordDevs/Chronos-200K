@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern>SHIP STATUS</pattern>
+        <template>
+            TELEMETRIA // CHRONOS
+            Oxigénio cabine: 21.0% — nominal.
+            Pressão: 101.3 kPa.
+            Blindagem: intacta.
+            Drive colonial: idle.
+            Próximo salto: aguarda coordenadas de exoplaneta.
+        </template>
+    </category>
+
+    <category>
+        <pattern>STATUS</pattern>
+        <template><srai>SHIP STATUS</srai></template>
+    </category>
+
+    <category>
+        <pattern>STATUS DA NAVE</pattern>
+        <template><srai>SHIP STATUS</srai></template>
+    </category>
+
+    <category>
+        <pattern>CHECK OXYGEN *</pattern>
+        <template>
+            Sensores de O2: níveis estáveis a 21%. Reciclagem biológica operacional. Capitão, pode manter o capacete aberto na ponte.
+        </template>
+    </category>
+
+    <category>
+        <pattern>CHECK OXYGEN LEVELS</pattern>
+        <template>
+            Sensores de O2: níveis estáveis a 21%. Reciclagem biológica operacional.
+        </template>
+    </category>
+
+    <category>
+        <pattern>OXYGEN</pattern>
+        <template>
+            Oxigénio: 21.0% · CO2: 0.04% · Scrubbers: online.
+        </template>
+    </category>
+
+    <category>
+        <pattern>CALCULATE ORBITAL ROUTE</pattern>
+        <template>
+            Rota orbital em standby. Especifique o alvo: ANALYZE PLANET &lt;nome&gt; para obter semi-eixo maior e distância do sistema.
+        </template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE MARTIAN ATMOSPHERE</pattern>
+        <template>
+            Atmosfera marciana de referência: ~95% CO2, pressão ~0.6 kPa, temp média ~-60°C.
+            Para um corpo catalogado na NASA Archive, use ANALYZE PLANET &lt;nome&gt;.
+        </template>
+    </category>
+
+    <category>
+        <pattern>ASTARTES KIT</pattern>
+        <template>
+            Kit Astartes (blueprint biomecânico): available via EVOLVE com gravidade elevada e atmosfera hostil.
+            Exemplo: EVOLVE gravity 2g water 20 generations 1000
+        </template>
+    </category>
+</aiml>
