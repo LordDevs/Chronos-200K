@@ -41,6 +41,6 @@ public class ChatAPI extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("CHRONOS ChatAPI online. Use POST /chat/api.");
+        response.getWriter().write("CHRONOS ChatAPI online. Use POST /api");
     }
 }

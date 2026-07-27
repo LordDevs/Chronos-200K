@@ -1,0 +1,27 @@
+0,ANALYZE JUNGLE PLANET,*,*,simulate:jungle,sci_fi_simulation.aiml
+0,ANALYZE JUNGLE PLANET *,*,*,simulate:jungle:<star/>,sci_fi_simulation.aiml
+0,ANALYSE JUNGLE PLANET,*,*,simulate:jungle,sci_fi_simulation.aiml
+0,JUNGLE WORLD,*,*,simulate:jungle,sci_fi_simulation.aiml
+0,HYPER DENSE JUNGLE PLANET,*,*,simulate:jungle:1.2,sci_fi_simulation.aiml
+0,ANALYZE OCEAN PLANET,*,*,simulate:ocean,sci_fi_simulation.aiml
+0,ANALYZE OCEAN PLANET *,*,*,simulate:ocean:<star/>,sci_fi_simulation.aiml
+0,ANALYSE OCEAN PLANET,*,*,simulate:ocean,sci_fi_simulation.aiml
+0,OCEAN WORLD,*,*,simulate:ocean,sci_fi_simulation.aiml
+0,ACTIVATE ASTARTES KIT,*,*,astartes:2.5:CO2-rich,sci_fi_simulation.aiml
+0,ACTIVATE ASTARTES KIT *,*,*,astartes:<star/>,sci_fi_simulation.aiml
+0,ASTARTES KIT,*,*,astartes:2.5:CO2-rich,sci_fi_simulation.aiml
+0,ASTARTES KIT * G,*,*,astartes:<star/>:N2-O2,sci_fi_simulation.aiml
+0,BLUEPRINT SYNTHETIC ORGANS,*,*,astartes:2.0:thin,sci_fi_simulation.aiml
+0,CARBON MATRIX SKELETON,*,*,astartes:2.5:CO2-rich,sci_fi_simulation.aiml
+0,PREDICT EVOLUTION 200K,*,*,speciate:200000:baseline,sci_fi_simulation.aiml
+0,PREDICT EVOLUTION 200000,*,*,speciate:200000:baseline,sci_fi_simulation.aiml
+0,PREDICT EVOLUTION 200K ON JUNGLE PLANET,*,*,speciate:200000:jungle,sci_fi_simulation.aiml
+0,PREDICT EVOLUTION 200K ON OCEAN PLANET,*,*,speciate:200000:ocean,sci_fi_simulation.aiml
+0,PREDICT EVOLUTION 200K ON SUPER EARTH,*,*,speciate:200000:super-earth,sci_fi_simulation.aiml
+0,PREDICT EVOLUTION 200K ON MARS,*,*,speciate:200000:mars,sci_fi_simulation.aiml
+0,SPECIATION 200000 YEARS,*,*,speciate:200000:baseline,sci_fi_simulation.aiml
+0,ANALYZE MARS,*,*,simulate:mars,sci_fi_simulation.aiml
+0,ANALYZE SUPER EARTH,*,*,simulate:super-earth:2.5,sci_fi_simulation.aiml
+0,ANALYZE SUPER EARTH * G,*,*,simulate:super-earth:<star/>,sci_fi_simulation.aiml
+0,SURVIVAL PROBABILITY ON MARS,*,*,simulate:mars,sci_fi_simulation.aiml
+0,SURVIVAL PROBABILITY ON SUPER EARTH,*,*,simulate:super-earth:2.5,sci_fi_simulation.aiml

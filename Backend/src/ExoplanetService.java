@@ -4,6 +4,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +19,11 @@ public class ExoplanetService {
     private static final Logger LOGGER = Logger.getLogger(ExoplanetService.class.getName());
     private static final String TAP_BASE =
             "https://exoplanetarchive.ipac.caltech.edu/TAP/sync";
-    private static final HttpClient CLIENT = HttpClient.newHttpClient();
+    private static final Duration REQUEST_TIMEOUT = Duration.ofSeconds(12);
+    private static final HttpClient CLIENT = HttpClient.newBuilder()
+            .connectTimeout(Duration.ofSeconds(5))
+            .followRedirects(HttpClient.Redirect.NORMAL)
+            .build();
 
     private final String planetQuery;
 
@@ -76,6 +81,7 @@ public class ExoplanetService {
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
+                    .timeout(REQUEST_TIMEOUT)
                     .header("Accept", "application/json")
                     .GET()
                     .build();

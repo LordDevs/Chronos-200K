@@ -8,8 +8,8 @@
   --danger: #ff6b6b;
   --panel: rgba(10, 22, 32, 0.82);
   --line: rgba(61, 224, 197, 0.35);
-  --font-display: "Orbitron", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-mono: Consolas, "Cascadia Mono", "Courier New", monospace;
 }
 
 * {

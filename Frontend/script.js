@@ -1,5 +1,5 @@
 (() => {
-  const apiUrl = `${window.location.origin}/chat/api`;
+  const apiUrl = `${window.location.origin}/api`;
   const messagesEl = document.getElementById("chat-messages");
   const form = document.getElementById("chatForm");
   const input = document.getElementById("chatInput");
@@ -8,6 +8,7 @@
   const quickReplies = document.getElementById("quickReplies");
 
   const seedPlanets = ["kepler-442 b", "proxima centauri b", "k2-18 b"];
+  const FETCH_MS = 15000;
 
   function appendMessage(html, sender) {
     const div = document.createElement("div");
@@ -32,15 +33,22 @@
   }
 
   async function postChronos(message) {
-    const response = await fetch(apiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain;charset=UTF-8" },
-      body: message,
-    });
-    if (!response.ok) {
-      throw new Error("HTTP " + response.status);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FETCH_MS);
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=UTF-8" },
+        body: message,
+        signal: controller.signal,
+      });
+      if (!response.ok) {
+        throw new Error("HTTP " + response.status);
+      }
+      return await response.text();
+    } finally {
+      clearTimeout(timer);
     }
-    return response.text();
   }
 
   async function sendToChronos(text) {
@@ -63,7 +71,7 @@
     } catch (err) {
       typing.remove();
       linkStatus.classList.remove("online");
-      appendMessage("Link perdido com CHRONOS. Confirme que o backend está em :8080.", "bot");
+      appendMessage("Link perdido com CHRONOS (timeout/rede). Confirme run.bat em :8080.", "bot");
       console.error(err);
     }
   }
@@ -106,22 +114,22 @@
     sendToChronos(btn.dataset.cmd);
   });
 
+  // Paint UI immediately — do not wait on NASA
   appendMessage(
     "Sistema CHRONOS inicializado. Canal tático pronto. Use os atalhos ou digite um comando.",
     "bot"
   );
+  linkStatus.classList.add("online");
 
-  // Prefetch telemetry cards without flooding the chat log
+  // Background telemetry (failures must not freeze the bridge)
   seedPlanets.forEach((planet, i) => {
     setTimeout(async () => {
       try {
         const reply = await postChronos(`exoplanet:${planet}`);
-        linkStatus.classList.add("online");
         upsertPlanetCard(planet, reply);
       } catch (err) {
-        linkStatus.classList.remove("online");
         console.warn("Seed planet failed", planet, err);
       }
-    }, 300 + i * 500);
+    }, 800 + i * 700);
   });
 })();

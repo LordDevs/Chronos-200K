@@ -42,4 +42,25 @@ public class MessageHandlerTest {
                         || result.toLowerCase().contains("adapta"),
                 result);
     }
+
+    @Test
+    void testAimlOceanPlanetRouting() {
+        String result = messageHandler.processMessage("ANALYZE OCEAN PLANET");
+        assertNotNull(result);
+        assertTrue(result.contains("LOGISTICS"), result);
+    }
+
+    @Test
+    void testAimlAstartesKitRouting() {
+        String result = messageHandler.processMessage("ACTIVATE ASTARTES KIT");
+        assertNotNull(result);
+        assertTrue(result.contains("ASTARTES KIT"), result);
+    }
+
+    @Test
+    void testAimlSpeciation200k() {
+        String result = messageHandler.processMessage("PREDICT EVOLUTION 200K");
+        assertNotNull(result);
+        assertTrue(result.contains("SPECIATION"), result);
+    }
 }

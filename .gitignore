@@ -1,5 +1,8 @@
 # Build
 Backend/bin/
+tomcat-work/
+server.log
+server.log.err
 *.class
 
 # Secrets / local config

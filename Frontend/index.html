@@ -4,9 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CHRONOS // Ship AI — Chronos-200K</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Local stacks only — Google Fonts were blocking first paint when offline/slow -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,7 +25,9 @@
       <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
       <div class="quick-replies" id="quickReplies">
         <button type="button" data-cmd="ANALYZE PLANET kepler-442 b">Analisar exoplaneta</button>
-        <button type="button" data-cmd="EVOLVE gravity 2g water 80 generations 1000">Modo evolução</button>
+        <button type="button" data-cmd="ANALYZE OCEAN PLANET">Ocean world</button>
+        <button type="button" data-cmd="ACTIVATE ASTARTES KIT">Astartes Kit</button>
+        <button type="button" data-cmd="PREDICT EVOLUTION 200K">Evolução 200K</button>
         <button type="button" data-cmd="SHIP STATUS">Status da nave</button>
       </div>
       <form id="chatForm" class="chat-input-row">

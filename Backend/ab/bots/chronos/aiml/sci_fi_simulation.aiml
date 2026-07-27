@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <!-- SCI-FI SIMULATION — triggers routed to Java via simulate:/astartes:/speciate: tokens -->
+
+    <category>
+        <pattern>ANALYZE JUNGLE PLANET</pattern>
+        <template>simulate:jungle</template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE JUNGLE PLANET *</pattern>
+        <template>simulate:jungle:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ANALYSE JUNGLE PLANET</pattern>
+        <template>simulate:jungle</template>
+    </category>
+
+    <category>
+        <pattern>JUNGLE WORLD</pattern>
+        <template>simulate:jungle</template>
+    </category>
+
+    <category>
+        <pattern>HYPER DENSE JUNGLE PLANET</pattern>
+        <template>simulate:jungle:1.2</template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE OCEAN PLANET</pattern>
+        <template>simulate:ocean</template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE OCEAN PLANET *</pattern>
+        <template>simulate:ocean:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ANALYSE OCEAN PLANET</pattern>
+        <template>simulate:ocean</template>
+    </category>
+
+    <category>
+        <pattern>OCEAN WORLD</pattern>
+        <template>simulate:ocean</template>
+    </category>
+
+    <category>
+        <pattern>ACTIVATE ASTARTES KIT</pattern>
+        <template>astartes:2.5:CO2-rich</template>
+    </category>
+
+    <category>
+        <pattern>ACTIVATE ASTARTES KIT *</pattern>
+        <template>astartes:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ASTARTES KIT</pattern>
+        <template>astartes:2.5:CO2-rich</template>
+    </category>
+
+    <category>
+        <pattern>ASTARTES KIT * G</pattern>
+        <template>astartes:<star/>:N2-O2</template>
+    </category>
+
+    <category>
+        <pattern>BLUEPRINT SYNTHETIC ORGANS</pattern>
+        <template>astartes:2.0:thin</template>
+    </category>
+
+    <category>
+        <pattern>CARBON MATRIX SKELETON</pattern>
+        <template>astartes:2.5:CO2-rich</template>
+    </category>
+
+    <category>
+        <pattern>PREDICT EVOLUTION 200K</pattern>
+        <template>speciate:200000:baseline</template>
+    </category>
+
+    <category>
+        <pattern>PREDICT EVOLUTION 200000</pattern>
+        <template>speciate:200000:baseline</template>
+    </category>
+
+    <category>
+        <pattern>PREDICT EVOLUTION 200K ON JUNGLE PLANET</pattern>
+        <template>speciate:200000:jungle</template>
+    </category>
+
+    <category>
+        <pattern>PREDICT EVOLUTION 200K ON OCEAN PLANET</pattern>
+        <template>speciate:200000:ocean</template>
+    </category>
+
+    <category>
+        <pattern>PREDICT EVOLUTION 200K ON SUPER EARTH</pattern>
+        <template>speciate:200000:super-earth</template>
+    </category>
+
+    <category>
+        <pattern>PREDICT EVOLUTION 200K ON MARS</pattern>
+        <template>speciate:200000:mars</template>
+    </category>
+
+    <category>
+        <pattern>SPECIATION 200000 YEARS</pattern>
+        <template>speciate:200000:baseline</template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE MARS</pattern>
+        <template>simulate:mars</template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE SUPER EARTH</pattern>
+        <template>simulate:super-earth:2.5</template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE SUPER EARTH * G</pattern>
+        <template>simulate:super-earth:<star/></template>
+    </category>
+
+    <category>
+        <pattern>SURVIVAL PROBABILITY ON MARS</pattern>
+        <template>simulate:mars</template>
+    </category>
+
+    <category>
+        <pattern>SURVIVAL PROBABILITY ON SUPER EARTH</pattern>
+        <template>simulate:super-earth:2.5</template>
+    </category>
+</aiml>

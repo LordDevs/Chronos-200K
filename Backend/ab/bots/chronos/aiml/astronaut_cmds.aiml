@@ -54,15 +54,7 @@
         <pattern>ANALYZE MARTIAN ATMOSPHERE</pattern>
         <template>
             Atmosfera marciana de referência: ~95% CO2, pressão ~0.6 kPa, temp média ~-60°C.
-            Para um corpo catalogado na NASA Archive, use ANALYZE PLANET &lt;nome&gt;.
-        </template>
-    </category>
-
-    <category>
-        <pattern>ASTARTES KIT</pattern>
-        <template>
-            Kit Astartes (blueprint biomecânico): available via EVOLVE com gravidade elevada e atmosfera hostil.
-            Exemplo: EVOLVE gravity 2g water 20 generations 1000
+            Para análise completa: <srai>ANALYZE MARS</srai>
         </template>
     </category>
 </aiml>

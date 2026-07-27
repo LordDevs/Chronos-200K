@@ -1,9 +1,11 @@
 import evolution.EvolutionEngine;
 import org.alicebot.ab.Chat;
+import simulation.CommandRouter;
 
 public class MessageHandler {
     private Chat chat;
     private final EvolutionEngine evolutionEngine = new EvolutionEngine();
+    private final CommandRouter commandRouter = new CommandRouter();
 
     public MessageHandler() {
     }
@@ -18,14 +20,11 @@ public class MessageHandler {
         }
 
         String trimmed = message.trim();
-        String lower = trimmed.toLowerCase();
 
-        // Direct command bypass (same pattern as legacy weather:)
-        if (lower.startsWith("exoplanet:")) {
-            return handleExoplanet(trimmed.substring("exoplanet:".length()).trim());
-        }
-        if (lower.startsWith("evolve:")) {
-            return handleEvolve(trimmed.substring("evolve:".length()).trim());
+        // Direct command bypass (API tests / scripted frontend)
+        String routed = tryRoute(trimmed);
+        if (routed != null) {
+            return routed;
         }
 
         if (chat == null) {
@@ -37,15 +36,37 @@ public class MessageHandler {
             return "⚠️ Estou com interferência no canal. Tente novamente, Capitão.";
         }
 
-        String responseLower = botResponse.toLowerCase();
-        if (responseLower.startsWith("exoplanet:")) {
-            return handleExoplanet(botResponse.substring("exoplanet:".length()).trim());
-        }
-        if (responseLower.startsWith("evolve:")) {
-            return handleEvolve(botResponse.substring("evolve:".length()).trim());
+        routed = tryRoute(botResponse);
+        if (routed != null) {
+            return routed;
         }
 
         return botResponse;
+    }
+
+    /**
+     * Routes AIML tokens and direct prefixes to Java services.
+     */
+    private String tryRoute(String text) {
+        if (text == null || text.isBlank()) {
+            return null;
+        }
+
+        String lower = text.trim().toLowerCase();
+
+        if (lower.startsWith("exoplanet:")) {
+            return handleExoplanet(text.substring("exoplanet:".length()).trim());
+        }
+        if (lower.startsWith("evolve:")) {
+            return handleEvolve(text.substring("evolve:".length()).trim());
+        }
+
+        String simulation = commandRouter.route(text.trim());
+        if (simulation != null) {
+            return simulation;
+        }
+
+        return null;
     }
 
     private String handleExoplanet(String planetName) {

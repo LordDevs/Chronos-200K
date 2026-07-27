@@ -5,5 +5,4 @@
 0,CHECK OXYGEN LEVELS,*,*,Sensores de O2: níveis estáveis a 21%. Reciclagem biológica operacional.,astronaut_cmds.aiml
 0,OXYGEN,*,*,Oxigénio: 21.0% · CO2: 0.04% · Scrubbers: online.,astronaut_cmds.aiml
 0,CALCULATE ORBITAL ROUTE,*,*,Rota orbital em standby. Especifique o alvo: ANALYZE PLANET &lt;nome&gt; para obter semi-eixo maior e distância do sistema.,astronaut_cmds.aiml
-0,ANALYZE MARTIAN ATMOSPHERE,*,*,Atmosfera marciana de referência: ~95% CO2#Comma pressão ~0.6 kPa#Comma temp média ~-60°C.#Newline            Para um corpo catalogado na NASA Archive#Comma use ANALYZE PLANET &lt;nome&gt;.,astronaut_cmds.aiml
-0,ASTARTES KIT,*,*,Kit Astartes (blueprint biomecânico): available via EVOLVE com gravidade elevada e atmosfera hostil.#Newline            Exemplo: EVOLVE gravity 2g water 20 generations 1000,astronaut_cmds.aiml
+0,ANALYZE MARTIAN ATMOSPHERE,*,*,Atmosfera marciana de referência: ~95% CO2#Comma pressão ~0.6 kPa#Comma temp média ~-60°C.#Newline            Para análise completa: <srai>ANALYZE MARS</srai>,astronaut_cmds.aiml
