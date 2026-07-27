@@ -63,4 +63,50 @@ public class MessageHandlerTest {
         assertNotNull(result);
         assertTrue(result.contains("SPECIATION"), result);
     }
+
+    @Test
+    void testVoicePortugueseOceanPlanet() {
+        String result = messageHandler.processMessage("ANALISAR PLANETA OCEANO");
+        assertNotNull(result);
+        assertTrue(result.contains("LOGISTICS"), result);
+    }
+
+    @Test
+    void testVoicePortugueseAstartesKit() {
+        String result = messageHandler.processMessage("ATIVAR KIT ASTARTES");
+        assertNotNull(result);
+        assertTrue(result.contains("ASTARTES KIT"), result);
+    }
+
+    @Test
+    void testVoicePortugueseShipStatus() {
+        String result = messageHandler.processMessage("ESTADO DA NAVE");
+        assertNotNull(result);
+        assertTrue(result.toUpperCase().contains("TELEMETRIA") || result.toUpperCase().contains("OXIG"),
+                result);
+    }
+
+    @Test
+    void testVoicePortugueseOxygen() {
+        String result = messageHandler.processMessage("VERIFICAR OXIGENIO");
+        assertNotNull(result);
+        assertTrue(result.toUpperCase().contains("O2") || result.toUpperCase().contains("OXIG"),
+                result);
+    }
+
+    @Test
+    void testVoicePortugueseExoplanet() {
+        String result = messageHandler.processMessage("ANALISAR PLANETA kepler-442 b");
+        assertNotNull(result);
+        assertTrue(result.toLowerCase().contains("kepler") || result.toLowerCase().contains("nasa")
+                        || result.toLowerCase().contains("capit"),
+                result);
+    }
+
+    @Test
+    void testVoiceEvolution200Mil() {
+        String result = messageHandler.processMessage("PREVER EVOLUCAO 200 MIL");
+        assertNotNull(result);
+        assertTrue(result.contains("SPECIATION"), result);
+    }
 }

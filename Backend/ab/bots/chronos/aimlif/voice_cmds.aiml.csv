@@ -1,0 +1,66 @@
+0,OLA,*,*,<srai>HI</srai>,voice_cmds.aiml
+0,OLA CHRONOS,*,*,<srai>WELCOME COMMANDER</srai>,voice_cmds.aiml
+0,BOM DIA,*,*,<srai>GOOD MORNING</srai>,voice_cmds.aiml
+0,BOA TARDE,*,*,<srai>WELCOME COMMANDER</srai>,voice_cmds.aiml
+0,BOA NOITE,*,*,<srai>WELCOME COMMANDER</srai>,voice_cmds.aiml
+0,AJUDA,*,*,<srai>HELP</srai>,voice_cmds.aiml
+0,PRECISO DE AJUDA,*,*,<srai>HELP</srai>,voice_cmds.aiml
+0,QUEM ES TU,*,*,<srai>WHO ARE YOU</srai>,voice_cmds.aiml
+0,QUEM E VOCE,*,*,<srai>WHO ARE YOU</srai>,voice_cmds.aiml
+0,PROTOCOLOS,*,*,<srai>PROTOCOLS</srai>,voice_cmds.aiml
+0,PROTOCOLOS DO SISTEMA,*,*,<srai>SYSTEM PROTOCOLS</srai>,voice_cmds.aiml
+0,ESTADO DA NAVE,*,*,<srai>SHIP STATUS</srai>,voice_cmds.aiml
+0,TELEMETRIA,*,*,<srai>SHIP STATUS</srai>,voice_cmds.aiml
+0,TELEMETRIA DA NAVE,*,*,<srai>SHIP STATUS</srai>,voice_cmds.aiml
+0,COMO ESTA A NAVE,*,*,<srai>SHIP STATUS</srai>,voice_cmds.aiml
+0,VERIFICAR OXIGENIO,*,*,<srai>OXYGEN</srai>,voice_cmds.aiml
+0,VERIFICAR OXIENIO,*,*,<srai>OXYGEN</srai>,voice_cmds.aiml
+0,NIVEIS DE OXIGENIO,*,*,<srai>OXYGEN</srai>,voice_cmds.aiml
+0,QUANTO OXIGENIO,*,*,<srai>OXYGEN</srai>,voice_cmds.aiml
+0,OXIGENIO,*,*,<srai>OXYGEN</srai>,voice_cmds.aiml
+0,OXYGEN LEVELS,*,*,<srai>OXYGEN</srai>,voice_cmds.aiml
+0,WHAT IS THE OXYGEN LEVEL,*,*,<srai>OXYGEN</srai>,voice_cmds.aiml
+0,ANALISAR PLANETA OCEANO,*,*,<srai>ANALYZE OCEAN PLANET</srai>,voice_cmds.aiml
+0,ANALISAR O PLANETA OCEANO,*,*,<srai>ANALYZE OCEAN PLANET</srai>,voice_cmds.aiml
+0,ANALISAR MUNDO OCEANO,*,*,<srai>ANALYZE OCEAN PLANET</srai>,voice_cmds.aiml
+0,PLANETA OCEANO,*,*,<srai>ANALYZE OCEAN PLANET</srai>,voice_cmds.aiml
+0,MUNDO OCEANO,*,*,<srai>ANALYZE OCEAN PLANET</srai>,voice_cmds.aiml
+0,ANALISAR PLANETA SELVA,*,*,<srai>ANALYZE JUNGLE PLANET</srai>,voice_cmds.aiml
+0,ANALISAR PLANETA JUNGLE,*,*,<srai>ANALYZE JUNGLE PLANET</srai>,voice_cmds.aiml
+0,ANALISAR O PLANETA SELVA,*,*,<srai>ANALYZE JUNGLE PLANET</srai>,voice_cmds.aiml
+0,ANALISAR MUNDO SELVA,*,*,<srai>ANALYZE JUNGLE PLANET</srai>,voice_cmds.aiml
+0,PLANETA SELVA,*,*,<srai>ANALYZE JUNGLE PLANET</srai>,voice_cmds.aiml
+0,MUNDO SELVA,*,*,<srai>ANALYZE JUNGLE PLANET</srai>,voice_cmds.aiml
+0,ANALYZE JUNGLE WORLD,*,*,<srai>ANALYZE JUNGLE PLANET</srai>,voice_cmds.aiml
+0,ANALYZE OCEAN WORLD,*,*,<srai>ANALYZE OCEAN PLANET</srai>,voice_cmds.aiml
+0,ANALISAR MARTE,*,*,<srai>ANALYZE MARS</srai>,voice_cmds.aiml
+0,ANALISAR O MARTE,*,*,<srai>ANALYZE MARS</srai>,voice_cmds.aiml
+0,ANALISAR SUPER TERRA,*,*,<srai>ANALYZE SUPER EARTH</srai>,voice_cmds.aiml
+0,ANALISAR A SUPER TERRA,*,*,<srai>ANALYZE SUPER EARTH</srai>,voice_cmds.aiml
+0,PROBABILIDADE DE SOBREVIVENCIA EM MARTE,*,*,<srai>SURVIVAL PROBABILITY ON MARS</srai>,voice_cmds.aiml
+0,ATIVAR KIT ASTARTES,*,*,<srai>ACTIVATE ASTARTES KIT</srai>,voice_cmds.aiml
+0,ATIVAR ASTARTES KIT,*,*,<srai>ACTIVATE ASTARTES KIT</srai>,voice_cmds.aiml
+0,ATIVAR O KIT ASTARTES,*,*,<srai>ACTIVATE ASTARTES KIT</srai>,voice_cmds.aiml
+0,KIT ASTARTES,*,*,<srai>ASTARTES KIT</srai>,voice_cmds.aiml
+0,ACTIVATE ASTARTES,*,*,<srai>ACTIVATE ASTARTES KIT</srai>,voice_cmds.aiml
+0,BLUEPRINT ORGAOS SINTETICOS,*,*,<srai>BLUEPRINT SYNTHETIC ORGANS</srai>,voice_cmds.aiml
+0,ESQUELETO MATRIZ CARBONO,*,*,<srai>CARBON MATRIX SKELETON</srai>,voice_cmds.aiml
+0,PREVER EVOLUCAO 200K,*,*,<srai>PREDICT EVOLUTION 200K</srai>,voice_cmds.aiml
+0,PREVER EVOLUCAO 200 MIL,*,*,<srai>PREDICT EVOLUTION 200K</srai>,voice_cmds.aiml
+0,PREVER EVOLUCAO 200000,*,*,<srai>PREDICT EVOLUTION 200000</srai>,voice_cmds.aiml
+0,EVOLUCAO 200 MIL ANOS,*,*,<srai>PREDICT EVOLUTION 200K</srai>,voice_cmds.aiml
+0,EVOLUCAO EM 200 MIL ANOS,*,*,<srai>PREDICT EVOLUTION 200K</srai>,voice_cmds.aiml
+0,ESPECIACAO 200 MIL ANOS,*,*,<srai>SPECIATION 200000 YEARS</srai>,voice_cmds.aiml
+0,PREVER EVOLUCAO 200K NO PLANETA OCEANO,*,*,<srai>PREDICT EVOLUTION 200K ON OCEAN PLANET</srai>,voice_cmds.aiml
+0,PREVER EVOLUCAO 200K NO PLANETA SELVA,*,*,<srai>PREDICT EVOLUTION 200K ON JUNGLE PLANET</srai>,voice_cmds.aiml
+0,PREVER EVOLUCAO 200K EM MARTE,*,*,<srai>PREDICT EVOLUTION 200K ON MARS</srai>,voice_cmds.aiml
+0,PREVER EVOLUCAO 200K NA SUPER TERRA,*,*,<srai>PREDICT EVOLUTION 200K ON SUPER EARTH</srai>,voice_cmds.aiml
+0,PREDICT EVOLUTION TWO HUNDRED THOUSAND,*,*,<srai>PREDICT EVOLUTION 200K</srai>,voice_cmds.aiml
+0,ANALISAR PLANETA *,*,*,exoplanet:<star/>,voice_cmds.aiml
+0,ANALISAR EXOPLANETA *,*,*,exoplanet:<star/>,voice_cmds.aiml
+0,ANALISAR O PLANETA *,*,*,exoplanet:<star/>,voice_cmds.aiml
+0,QUAIS AS CONDICOES DO *,*,*,exoplanet:<star/>,voice_cmds.aiml
+0,CONDICOES NO *,*,*,exoplanet:<star/>,voice_cmds.aiml
+0,CONDICOES EM *,*,*,exoplanet:<star/>,voice_cmds.aiml
+0,ANALYZE THE PLANET *,*,*,exoplanet:<star/>,voice_cmds.aiml
+0,WHAT ARE CONDITIONS ON *,*,*,exoplanet:<star/>,voice_cmds.aiml

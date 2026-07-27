@@ -1,6 +1,54 @@
 /**
  * CHRONOS voice channel — Web Speech API (browser-only).
  */
+
+/** Normalize pt-PT STT quirks before AIML routing. */
+window.normalizeVoiceTranscript = function normalizeVoiceTranscript(raw) {
+  let text = (raw || "").trim().replace(/\s+/g, " ");
+  if (!text) return text;
+
+  const key = text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "")
+    .replace(/[.,!?;:]/g, "")
+    .trim();
+
+  const exact = {
+    "ola": "OLA",
+    "ola chronos": "OLA CHRONOS",
+    "bom dia": "BOM DIA",
+    "status da nave": "STATUS DA NAVE",
+    "estado da nave": "ESTADO DA NAVE",
+    "telemetria": "TELEMETRIA",
+    "verificar oxigenio": "VERIFICAR OXIGENIO",
+    "niveis de oxigenio": "NIVEIS DE OXIGENIO",
+    "analisar planeta oceano": "ANALISAR PLANETA OCEANO",
+    "analisar o planeta oceano": "ANALISAR PLANETA OCEANO",
+    "analisar planeta selva": "ANALISAR PLANETA SELVA",
+    "analisar o planeta selva": "ANALISAR PLANETA SELVA",
+    "ativar kit astartes": "ATIVAR KIT ASTARTES",
+    "ativar astartes kit": "ATIVAR ASTARTES KIT",
+    "prever evolucao 200 mil": "PREVER EVOLUCAO 200 MIL",
+    "prever evolucao 200k": "PREVER EVOLUCAO 200K",
+    "evolucao 200 mil anos": "EVOLUCAO 200 MIL ANOS",
+    "ajuda": "AJUDA",
+    "quem es tu": "QUEM ES TU",
+  };
+
+  if (exact[key]) return exact[key];
+
+  text = text.replace(/\b200\s*mil\b/gi, "200K");
+  text = text.replace(/\bduzentos\s*mil\b/gi, "200K");
+
+  // STT often drops hyphens in exoplanet names: "kepler 442 b" → "kepler-442 b"
+  text = text.replace(/\bkepler\s+(\d+)\s+([a-z])\b/gi, "kepler-$1 $2");
+  text = text.replace(/\bproxima\s+centauri\s+([a-z])\b/gi, "proxima centauri $1");
+  text = text.replace(/\bk2\s+18\s+([a-z])\b/gi, "k2-18 $1");
+
+  return text;
+};
+
 window.createVoiceChannel = function createVoiceChannel({ onTranscript, onStatus, onError }) {
   const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -67,7 +115,7 @@ window.createVoiceChannel = function createVoiceChannel({ onTranscript, onStatus
     recognition.onresult = (ev) => {
       const transcript = ev.results[0][0].transcript.trim();
       if (transcript && onTranscript) {
-        onTranscript(transcript);
+        onTranscript(window.normalizeVoiceTranscript(transcript));
       }
     };
 

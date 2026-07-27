@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <!-- Voice-friendly aliases (PT + EN) — Web Speech STT → existing protocols -->
+
+    <!-- Greeting / persona -->
+    <category>
+        <pattern>OLA</pattern>
+        <template><srai>HI</srai></template>
+    </category>
+
+    <category>
+        <pattern>OLA CHRONOS</pattern>
+        <template><srai>WELCOME COMMANDER</srai></template>
+    </category>
+
+    <category>
+        <pattern>BOM DIA</pattern>
+        <template><srai>GOOD MORNING</srai></template>
+    </category>
+
+    <category>
+        <pattern>BOA TARDE</pattern>
+        <template><srai>WELCOME COMMANDER</srai></template>
+    </category>
+
+    <category>
+        <pattern>BOA NOITE</pattern>
+        <template><srai>WELCOME COMMANDER</srai></template>
+    </category>
+
+    <category>
+        <pattern>AJUDA</pattern>
+        <template><srai>HELP</srai></template>
+    </category>
+
+    <category>
+        <pattern>PRECISO DE AJUDA</pattern>
+        <template><srai>HELP</srai></template>
+    </category>
+
+    <category>
+        <pattern>QUEM ES TU</pattern>
+        <template><srai>WHO ARE YOU</srai></template>
+    </category>
+
+    <category>
+        <pattern>QUEM E VOCE</pattern>
+        <template><srai>WHO ARE YOU</srai></template>
+    </category>
+
+    <category>
+        <pattern>PROTOCOLOS</pattern>
+        <template><srai>PROTOCOLS</srai></template>
+    </category>
+
+    <category>
+        <pattern>PROTOCOLOS DO SISTEMA</pattern>
+        <template><srai>SYSTEM PROTOCOLS</srai></template>
+    </category>
+
+    <!-- Telemetria -->
+    <category>
+        <pattern>ESTADO DA NAVE</pattern>
+        <template><srai>SHIP STATUS</srai></template>
+    </category>
+
+    <category>
+        <pattern>TELEMETRIA</pattern>
+        <template><srai>SHIP STATUS</srai></template>
+    </category>
+
+    <category>
+        <pattern>TELEMETRIA DA NAVE</pattern>
+        <template><srai>SHIP STATUS</srai></template>
+    </category>
+
+    <category>
+        <pattern>COMO ESTA A NAVE</pattern>
+        <template><srai>SHIP STATUS</srai></template>
+    </category>
+
+    <category>
+        <pattern>VERIFICAR OXIGENIO</pattern>
+        <template><srai>OXYGEN</srai></template>
+    </category>
+
+    <category>
+        <pattern>VERIFICAR OXIENIO</pattern>
+        <template><srai>OXYGEN</srai></template>
+    </category>
+
+    <category>
+        <pattern>NIVEIS DE OXIGENIO</pattern>
+        <template><srai>OXYGEN</srai></template>
+    </category>
+
+    <category>
+        <pattern>QUANTO OXIGENIO</pattern>
+        <template><srai>OXYGEN</srai></template>
+    </category>
+
+    <category>
+        <pattern>OXIGENIO</pattern>
+        <template><srai>OXYGEN</srai></template>
+    </category>
+
+    <category>
+        <pattern>OXYGEN LEVELS</pattern>
+        <template><srai>OXYGEN</srai></template>
+    </category>
+
+    <category>
+        <pattern>WHAT IS THE OXYGEN LEVEL</pattern>
+        <template><srai>OXYGEN</srai></template>
+    </category>
+
+    <!-- Biome simulation (specific before wildcards) -->
+    <category>
+        <pattern>ANALISAR PLANETA OCEANO</pattern>
+        <template><srai>ANALYZE OCEAN PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR O PLANETA OCEANO</pattern>
+        <template><srai>ANALYZE OCEAN PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR MUNDO OCEANO</pattern>
+        <template><srai>ANALYZE OCEAN PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>PLANETA OCEANO</pattern>
+        <template><srai>ANALYZE OCEAN PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>MUNDO OCEANO</pattern>
+        <template><srai>ANALYZE OCEAN PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR PLANETA SELVA</pattern>
+        <template><srai>ANALYZE JUNGLE PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR PLANETA JUNGLE</pattern>
+        <template><srai>ANALYZE JUNGLE PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR O PLANETA SELVA</pattern>
+        <template><srai>ANALYZE JUNGLE PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR MUNDO SELVA</pattern>
+        <template><srai>ANALYZE JUNGLE PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>PLANETA SELVA</pattern>
+        <template><srai>ANALYZE JUNGLE PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>MUNDO SELVA</pattern>
+        <template><srai>ANALYZE JUNGLE PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE JUNGLE WORLD</pattern>
+        <template><srai>ANALYZE JUNGLE PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE OCEAN WORLD</pattern>
+        <template><srai>ANALYZE OCEAN PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR MARTE</pattern>
+        <template><srai>ANALYZE MARS</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR O MARTE</pattern>
+        <template><srai>ANALYZE MARS</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR SUPER TERRA</pattern>
+        <template><srai>ANALYZE SUPER EARTH</srai></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR A SUPER TERRA</pattern>
+        <template><srai>ANALYZE SUPER EARTH</srai></template>
+    </category>
+
+    <category>
+        <pattern>PROBABILIDADE DE SOBREVIVENCIA EM MARTE</pattern>
+        <template><srai>SURVIVAL PROBABILITY ON MARS</srai></template>
+    </category>
+
+    <!-- Astartes Kit -->
+    <category>
+        <pattern>ATIVAR KIT ASTARTES</pattern>
+        <template><srai>ACTIVATE ASTARTES KIT</srai></template>
+    </category>
+
+    <category>
+        <pattern>ATIVAR ASTARTES KIT</pattern>
+        <template><srai>ACTIVATE ASTARTES KIT</srai></template>
+    </category>
+
+    <category>
+        <pattern>ATIVAR O KIT ASTARTES</pattern>
+        <template><srai>ACTIVATE ASTARTES KIT</srai></template>
+    </category>
+
+    <category>
+        <pattern>KIT ASTARTES</pattern>
+        <template><srai>ASTARTES KIT</srai></template>
+    </category>
+
+    <category>
+        <pattern>ACTIVATE ASTARTES</pattern>
+        <template><srai>ACTIVATE ASTARTES KIT</srai></template>
+    </category>
+
+    <category>
+        <pattern>BLUEPRINT ORGAOS SINTETICOS</pattern>
+        <template><srai>BLUEPRINT SYNTHETIC ORGANS</srai></template>
+    </category>
+
+    <category>
+        <pattern>ESQUELETO MATRIZ CARBONO</pattern>
+        <template><srai>CARBON MATRIX SKELETON</srai></template>
+    </category>
+
+    <!-- Speciation / evolution -->
+    <category>
+        <pattern>PREVER EVOLUCAO 200K</pattern>
+        <template><srai>PREDICT EVOLUTION 200K</srai></template>
+    </category>
+
+    <category>
+        <pattern>PREVER EVOLUCAO 200 MIL</pattern>
+        <template><srai>PREDICT EVOLUTION 200K</srai></template>
+    </category>
+
+    <category>
+        <pattern>PREVER EVOLUCAO 200000</pattern>
+        <template><srai>PREDICT EVOLUTION 200000</srai></template>
+    </category>
+
+    <category>
+        <pattern>EVOLUCAO 200 MIL ANOS</pattern>
+        <template><srai>PREDICT EVOLUTION 200K</srai></template>
+    </category>
+
+    <category>
+        <pattern>EVOLUCAO EM 200 MIL ANOS</pattern>
+        <template><srai>PREDICT EVOLUTION 200K</srai></template>
+    </category>
+
+    <category>
+        <pattern>ESPECIACAO 200 MIL ANOS</pattern>
+        <template><srai>SPECIATION 200000 YEARS</srai></template>
+    </category>
+
+    <category>
+        <pattern>PREVER EVOLUCAO 200K NO PLANETA OCEANO</pattern>
+        <template><srai>PREDICT EVOLUTION 200K ON OCEAN PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>PREVER EVOLUCAO 200K NO PLANETA SELVA</pattern>
+        <template><srai>PREDICT EVOLUTION 200K ON JUNGLE PLANET</srai></template>
+    </category>
+
+    <category>
+        <pattern>PREVER EVOLUCAO 200K EM MARTE</pattern>
+        <template><srai>PREDICT EVOLUTION 200K ON MARS</srai></template>
+    </category>
+
+    <category>
+        <pattern>PREVER EVOLUCAO 200K NA SUPER TERRA</pattern>
+        <template><srai>PREDICT EVOLUTION 200K ON SUPER EARTH</srai></template>
+    </category>
+
+    <category>
+        <pattern>PREDICT EVOLUTION TWO HUNDRED THOUSAND</pattern>
+        <template><srai>PREDICT EVOLUTION 200K</srai></template>
+    </category>
+
+    <!-- Exoplanet lookup (voice) -->
+    <category>
+        <pattern>ANALISAR PLANETA *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR EXOPLANETA *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ANALISAR O PLANETA *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>QUAIS AS CONDICOES DO *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>CONDICOES NO *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>CONDICOES EM *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ANALYZE THE PLANET *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+
+    <category>
+        <pattern>WHAT ARE CONDITIONS ON *</pattern>
+        <template>exoplanet:<star/></template>
+    </category>
+</aiml>

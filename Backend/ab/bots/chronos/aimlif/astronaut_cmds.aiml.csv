@@ -2,7 +2,8 @@
 0,STATUS,*,*,<srai>SHIP STATUS</srai>,astronaut_cmds.aiml
 0,STATUS DA NAVE,*,*,<srai>SHIP STATUS</srai>,astronaut_cmds.aiml
 0,CHECK OXYGEN *,*,*,Sensores de O2: níveis estáveis a 21%. Reciclagem biológica operacional. Capitão#Comma pode manter o capacete aberto na ponte.,astronaut_cmds.aiml
-0,CHECK OXYGEN LEVELS,*,*,Sensores de O2: níveis estáveis a 21%. Reciclagem biológica operacional.,astronaut_cmds.aiml
+0,CHECK OXYGEN LEVELS,*,*,<srai>OXYGEN</srai>,astronaut_cmds.aiml
+0,CHECK OXYGEN,*,*,<srai>OXYGEN</srai>,astronaut_cmds.aiml
 0,OXYGEN,*,*,Oxigénio: 21.0% · CO2: 0.04% · Scrubbers: online.,astronaut_cmds.aiml
 0,CALCULATE ORBITAL ROUTE,*,*,Rota orbital em standby. Especifique o alvo: ANALYZE PLANET &lt;nome&gt; para obter semi-eixo maior e distância do sistema.,astronaut_cmds.aiml
 0,ANALYZE MARTIAN ATMOSPHERE,*,*,Atmosfera marciana de referência: ~95% CO2#Comma pressão ~0.6 kPa#Comma temp média ~-60°C.#Newline            Para análise completa: <srai>ANALYZE MARS</srai>,astronaut_cmds.aiml
