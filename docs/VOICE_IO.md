@@ -40,7 +40,7 @@ While listening, the HUD shows a helmet visor pulse (`body.helmet-listening`).
 | "Analisar planeta selva" | `ANALYZE JUNGLE PLANET` |
 | "Analisar Marte" | `ANALYZE MARS` |
 | "Analisar super terra" | `ANALYZE SUPER EARTH` |
-| "Ativar kit Astartes" | `ACTIVATE ASTARTES KIT` |
+| "Ativar protocolo Apex" / "Ativar CAP" | `ACTIVATE APEX PROTOCOL` |
 | "Prever evolução 200 mil" / "200K" | `PREDICT EVOLUTION 200K` |
 | "Evolução 200 mil anos no planeta oceano" | `PREDICT EVOLUTION 200K ON OCEAN PLANET` |
 

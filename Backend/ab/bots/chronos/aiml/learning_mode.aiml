@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <!-- Learning Mode v2 — persist terraforming profiles -->
+
+    <category>
+        <pattern>LEARNING MODE SAVE *</pattern>
+        <template>learn:save:<star/></template>
+    </category>
+
+    <category>
+        <pattern>LEARNING MODE LIST</pattern>
+        <template>learn:list</template>
+    </category>
+
+    <category>
+        <pattern>LEARNING MODE LOAD *</pattern>
+        <template>learn:load:<star/></template>
+    </category>
+
+    <category>
+        <pattern>LEARNING MODE EVOLVE *</pattern>
+        <template>learn:evolve:<star/></template>
+    </category>
+
+    <category>
+        <pattern>LEARNING MODE DELETE *</pattern>
+        <template>learn:delete:<star/></template>
+    </category>
+
+    <category>
+        <pattern>LEARNING MODE HELP</pattern>
+        <template>learn:help</template>
+    </category>
+
+    <category>
+        <pattern>COLONY ARCHIVE</pattern>
+        <template>learn:list</template>
+    </category>
+
+    <category>
+        <pattern>LIST COLONIES</pattern>
+        <template>learn:list</template>
+    </category>
+
+    <category>
+        <pattern>SAVE COLONY *</pattern>
+        <template>learn:save:<star/></template>
+    </category>
+
+    <category>
+        <pattern>EVOLVE COLONY *</pattern>
+        <template>learn:evolve:<star/></template>
+    </category>
+
+    <category>
+        <pattern>DELETE COLONY *</pattern>
+        <template>learn:delete:<star/></template>
+    </category>
+
+    <!-- Portuguese -->
+    <category>
+        <pattern>MODO APRENDIZAGEM GUARDAR *</pattern>
+        <template>learn:save:<star/></template>
+    </category>
+
+    <category>
+        <pattern>MODO APRENDIZAGEM LISTAR</pattern>
+        <template>learn:list</template>
+    </category>
+
+    <category>
+        <pattern>MODO APRENDIZAGEM CARREGAR *</pattern>
+        <template>learn:load:<star/></template>
+    </category>
+
+    <category>
+        <pattern>MODO APRENDIZAGEM EVOLUIR *</pattern>
+        <template>learn:evolve:<star/></template>
+    </category>
+
+    <category>
+        <pattern>MODO APRENDIZAGEM APAGAR *</pattern>
+        <template>learn:delete:<star/></template>
+    </category>
+</aiml>

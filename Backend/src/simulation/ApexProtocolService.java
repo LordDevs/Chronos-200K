@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/** "The Astartes Kit" — biomechanical enhancement blueprints. */
-public class AstartesKitService {
+/** Chronos Apex Protocol (CAP) — biomechanical enhancement blueprints. */
+public class ApexProtocolService {
 
     public String generateBlueprint(String gravityToken, String atmosphereToken) {
         double gravity = PhysicsCatalog.parseGravityToken(gravityToken, PhysicsCatalog.EARTH_G);
@@ -45,10 +45,10 @@ public class AstartesKitService {
             implants.add("Membrana timpânica líquida — equilíbrio pressão abissal");
         }
 
-        double survival = estimateSurvivalWithKit(gravity, atmosphere);
+        double survival = estimateSurvivalWithProtocol(gravity, atmosphere);
 
         StringBuilder sb = new StringBuilder();
-        sb.append("ASTARTES KIT // biomechanical blueprint<br>");
+        sb.append("CHRONOS APEX PROTOCOL // biomechanical blueprint<br>");
         sb.append(String.format(Locale.US,
                 "Perfil alvo: <strong>%.2fg</strong> · Atmosfera: <strong>%s</strong><br><br>",
                 gravity, escape(atmosphere)));
@@ -62,15 +62,15 @@ public class AstartesKitService {
             sb.append("• ").append(item).append("<br>");
         }
 
-        sb.append("<br>Probabilidade de sobrevivência colonial <em>com kit</em>: <strong>")
+        sb.append("<br>Probabilidade de sobrevivência colonial <em>com Protocolo Apex</em>: <strong>")
                 .append(String.format(Locale.US, "%.0f%%", survival * 100))
                 .append("</strong><br>");
-        sb.append("<em>Capitão, blueprints prontos para fabricação em nano-forja de bordo.</em>");
+        sb.append("<em>Capitão, blueprints CAP prontos para fabricação em nano-forja de bordo.</em>");
 
         return sb.toString();
     }
 
-    private double estimateSurvivalWithKit(double gravity, String atmosphere) {
+    private double estimateSurvivalWithProtocol(double gravity, String atmosphere) {
         double base = 0.55;
         if (gravity <= 2.5 && gravity >= 0.3) {
             base += 0.25;

@@ -205,30 +205,35 @@
         <template><srai>SURVIVAL PROBABILITY ON MARS</srai></template>
     </category>
 
-    <!-- Astartes Kit -->
+    <!-- Chronos Apex Protocol (CAP) -->
     <category>
-        <pattern>ATIVAR KIT ASTARTES</pattern>
-        <template><srai>ACTIVATE ASTARTES KIT</srai></template>
+        <pattern>ATIVAR PROTOCOLO APEX</pattern>
+        <template><srai>ACTIVATE APEX PROTOCOL</srai></template>
     </category>
 
     <category>
-        <pattern>ATIVAR ASTARTES KIT</pattern>
-        <template><srai>ACTIVATE ASTARTES KIT</srai></template>
+        <pattern>ATIVAR O PROTOCOLO APEX</pattern>
+        <template><srai>ACTIVATE APEX PROTOCOL</srai></template>
     </category>
 
     <category>
-        <pattern>ATIVAR O KIT ASTARTES</pattern>
-        <template><srai>ACTIVATE ASTARTES KIT</srai></template>
+        <pattern>PROTOCOLO APEX</pattern>
+        <template><srai>APEX PROTOCOL</srai></template>
     </category>
 
     <category>
-        <pattern>KIT ASTARTES</pattern>
-        <template><srai>ASTARTES KIT</srai></template>
+        <pattern>PROTOCOLO APEX CHRONOS</pattern>
+        <template><srai>ACTIVATE APEX PROTOCOL</srai></template>
     </category>
 
     <category>
-        <pattern>ACTIVATE ASTARTES</pattern>
-        <template><srai>ACTIVATE ASTARTES KIT</srai></template>
+        <pattern>ATIVAR CAP</pattern>
+        <template><srai>ACTIVATE CAP</srai></template>
+    </category>
+
+    <category>
+        <pattern>CHRONOS APEX</pattern>
+        <template><srai>CHRONOS APEX PROTOCOL</srai></template>
     </category>
 
     <category>
@@ -336,5 +341,41 @@
     <category>
         <pattern>WHAT ARE CONDITIONS ON *</pattern>
         <template>exoplanet:<star/></template>
+    </category>
+
+    <!-- Learning Mode v2 (voice) -->
+    <category>
+        <pattern>GUARDAR COLONIA *</pattern>
+        <template><srai>SAVE COLONY <star/></srai></template>
+    </category>
+
+    <category>
+        <pattern>LISTAR COLONIAS</pattern>
+        <template><srai>LIST COLONIES</srai></template>
+    </category>
+
+    <category>
+        <pattern>ARQUIVO COLONIAL</pattern>
+        <template><srai>COLONY ARCHIVE</srai></template>
+    </category>
+
+    <category>
+        <pattern>EVOLUIR COLONIA *</pattern>
+        <template><srai>EVOLVE COLONY <star/></srai></template>
+    </category>
+
+    <category>
+        <pattern>CARREGAR COLONIA *</pattern>
+        <template><srai>LEARNING MODE LOAD <star/></srai></template>
+    </category>
+
+    <category>
+        <pattern>APAGAR COLONIA *</pattern>
+        <template><srai>DELETE COLONY <star/></srai></template>
+    </category>
+
+    <category>
+        <pattern>MODO APRENDIZAGEM AJUDA</pattern>
+        <template><srai>LEARNING MODE HELP</srai></template>
     </category>
 </aiml>

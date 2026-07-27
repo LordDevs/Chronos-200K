@@ -119,15 +119,34 @@ body {
   z-index: 2;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto auto;
   gap: 1.25rem;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.25rem 2.5rem;
+}
+
+.chat-panel {
+  grid-row: 1 / 3;
+  grid-column: 1;
+}
+
+.data-panel,
+.colony-panel {
+  grid-column: 2;
+  min-height: 280px;
 }
 
 @media (max-width: 840px) {
   .bridge {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .chat-panel,
+  .data-panel,
+  .colony-panel {
+    grid-row: auto;
+    grid-column: auto;
   }
   .hud-frame {
     inset: 6px;
@@ -403,4 +422,117 @@ body.helmet-listening .hud-frame {
 
 body.helmet-listening .voice-status {
   color: var(--cyan);
+}
+
+.colony-form {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.colony-form input[type="text"],
+.colony-form select {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 0.4rem 0.5rem;
+}
+
+.colony-fields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.35rem 0.75rem;
+}
+
+.colony-fields label {
+  font-size: 0.68rem;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.colony-fields input {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 0.3rem 0.4rem;
+  width: 100%;
+}
+
+.colony-save-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.colony-save-btn:hover {
+  background: rgba(61, 224, 197, 0.12);
+}
+
+.colony-cards {
+  padding: 0.75rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.colony-card {
+  border: 1px solid var(--line);
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.colony-card h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--cyan);
+}
+
+.colony-card .meta {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 0.45rem;
+}
+
+.colony-card .actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.colony-card button {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 0.25rem 0.45rem;
+  cursor: pointer;
+}
+
+.colony-card button:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.colony-empty {
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding: 0.5rem 0;
 }

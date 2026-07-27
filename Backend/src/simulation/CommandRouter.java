@@ -8,14 +8,14 @@ import java.util.Locale;
  * <p>Protocol:
  * <ul>
  *   <li>{@code simulate:jungle[:gravity]} → BiomeSimulationService</li>
- *   <li>{@code astartes[:gravity][:atmosphere]} → AstartesKitService</li>
+ *   <li>{@code apex[:gravity][:atmosphere]} → ApexProtocolService</li>
  *   <li>{@code speciate:200000[:biome]} → SpeciationService</li>
  * </ul>
  */
 public class CommandRouter {
 
     private final BiomeSimulationService biomeService = new BiomeSimulationService();
-    private final AstartesKitService astartesService = new AstartesKitService();
+    private final ApexProtocolService apexService = new ApexProtocolService();
     private final SpeciationService speciationService = new SpeciationService();
 
     /** @return HTML response if handled; {@code null} otherwise */
@@ -30,8 +30,8 @@ public class CommandRouter {
         if (lower.startsWith("simulate:")) {
             return routeSimulate(token.substring("simulate:".length()));
         }
-        if (lower.startsWith("astartes:")) {
-            return routeAstartes(token.substring("astartes:".length()));
+        if (lower.startsWith("apex:")) {
+            return routeApex(token.substring("apex:".length()));
         }
         if (lower.startsWith("speciate:")) {
             return routeSpeciate(token.substring("speciate:".length()));
@@ -47,11 +47,11 @@ public class CommandRouter {
         return biomeService.analyzeBiome(biome, gravityOverride);
     }
 
-    private String routeAstartes(String payload) {
+    private String routeApex(String payload) {
         String[] parts = payload.split(":", 2);
         String gravity = parts[0].trim();
         String atmosphere = parts.length > 1 ? parts[1].trim() : "N2-O2";
-        return astartesService.generateBlueprint(gravity, atmosphere);
+        return apexService.generateBlueprint(gravity, atmosphere);
     }
 
     private String routeSpeciate(String payload) {

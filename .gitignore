@@ -1,5 +1,6 @@
 # Build
 Backend/bin/
+Backend/data/
 tomcat-work/
 server.log
 server.log.err

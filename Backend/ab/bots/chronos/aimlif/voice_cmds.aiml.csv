@@ -38,11 +38,12 @@
 0,ANALISAR SUPER TERRA,*,*,<srai>ANALYZE SUPER EARTH</srai>,voice_cmds.aiml
 0,ANALISAR A SUPER TERRA,*,*,<srai>ANALYZE SUPER EARTH</srai>,voice_cmds.aiml
 0,PROBABILIDADE DE SOBREVIVENCIA EM MARTE,*,*,<srai>SURVIVAL PROBABILITY ON MARS</srai>,voice_cmds.aiml
-0,ATIVAR KIT ASTARTES,*,*,<srai>ACTIVATE ASTARTES KIT</srai>,voice_cmds.aiml
-0,ATIVAR ASTARTES KIT,*,*,<srai>ACTIVATE ASTARTES KIT</srai>,voice_cmds.aiml
-0,ATIVAR O KIT ASTARTES,*,*,<srai>ACTIVATE ASTARTES KIT</srai>,voice_cmds.aiml
-0,KIT ASTARTES,*,*,<srai>ASTARTES KIT</srai>,voice_cmds.aiml
-0,ACTIVATE ASTARTES,*,*,<srai>ACTIVATE ASTARTES KIT</srai>,voice_cmds.aiml
+0,ATIVAR PROTOCOLO APEX,*,*,<srai>ACTIVATE APEX PROTOCOL</srai>,voice_cmds.aiml
+0,ATIVAR O PROTOCOLO APEX,*,*,<srai>ACTIVATE APEX PROTOCOL</srai>,voice_cmds.aiml
+0,PROTOCOLO APEX,*,*,<srai>APEX PROTOCOL</srai>,voice_cmds.aiml
+0,PROTOCOLO APEX CHRONOS,*,*,<srai>ACTIVATE APEX PROTOCOL</srai>,voice_cmds.aiml
+0,ATIVAR CAP,*,*,<srai>ACTIVATE CAP</srai>,voice_cmds.aiml
+0,CHRONOS APEX,*,*,<srai>CHRONOS APEX PROTOCOL</srai>,voice_cmds.aiml
 0,BLUEPRINT ORGAOS SINTETICOS,*,*,<srai>BLUEPRINT SYNTHETIC ORGANS</srai>,voice_cmds.aiml
 0,ESQUELETO MATRIZ CARBONO,*,*,<srai>CARBON MATRIX SKELETON</srai>,voice_cmds.aiml
 0,PREVER EVOLUCAO 200K,*,*,<srai>PREDICT EVOLUTION 200K</srai>,voice_cmds.aiml
@@ -64,3 +65,10 @@
 0,CONDICOES EM *,*,*,exoplanet:<star/>,voice_cmds.aiml
 0,ANALYZE THE PLANET *,*,*,exoplanet:<star/>,voice_cmds.aiml
 0,WHAT ARE CONDITIONS ON *,*,*,exoplanet:<star/>,voice_cmds.aiml
+0,GUARDAR COLONIA *,*,*,<srai>SAVE COLONY <star/></srai>,voice_cmds.aiml
+0,LISTAR COLONIAS,*,*,<srai>LIST COLONIES</srai>,voice_cmds.aiml
+0,ARQUIVO COLONIAL,*,*,<srai>COLONY ARCHIVE</srai>,voice_cmds.aiml
+0,EVOLUIR COLONIA *,*,*,<srai>EVOLVE COLONY <star/></srai>,voice_cmds.aiml
+0,CARREGAR COLONIA *,*,*,<srai>LEARNING MODE LOAD <star/></srai>,voice_cmds.aiml
+0,APAGAR COLONIA *,*,*,<srai>DELETE COLONY <star/></srai>,voice_cmds.aiml
+0,MODO APRENDIZAGEM AJUDA,*,*,<srai>LEARNING MODE HELP</srai>,voice_cmds.aiml

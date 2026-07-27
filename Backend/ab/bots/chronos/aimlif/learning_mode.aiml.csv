@@ -1,0 +1,16 @@
+0,LEARNING MODE SAVE *,*,*,learn:save:<star/>,learning_mode.aiml
+0,LEARNING MODE LIST,*,*,learn:list,learning_mode.aiml
+0,LEARNING MODE LOAD *,*,*,learn:load:<star/>,learning_mode.aiml
+0,LEARNING MODE EVOLVE *,*,*,learn:evolve:<star/>,learning_mode.aiml
+0,LEARNING MODE DELETE *,*,*,learn:delete:<star/>,learning_mode.aiml
+0,LEARNING MODE HELP,*,*,learn:help,learning_mode.aiml
+0,COLONY ARCHIVE,*,*,learn:list,learning_mode.aiml
+0,LIST COLONIES,*,*,learn:list,learning_mode.aiml
+0,SAVE COLONY *,*,*,learn:save:<star/>,learning_mode.aiml
+0,EVOLVE COLONY *,*,*,learn:evolve:<star/>,learning_mode.aiml
+0,DELETE COLONY *,*,*,learn:delete:<star/>,learning_mode.aiml
+0,MODO APRENDIZAGEM GUARDAR *,*,*,learn:save:<star/>,learning_mode.aiml
+0,MODO APRENDIZAGEM LISTAR,*,*,learn:list,learning_mode.aiml
+0,MODO APRENDIZAGEM CARREGAR *,*,*,learn:load:<star/>,learning_mode.aiml
+0,MODO APRENDIZAGEM EVOLUIR *,*,*,learn:evolve:<star/>,learning_mode.aiml
+0,MODO APRENDIZAGEM APAGAR *,*,*,learn:delete:<star/>,learning_mode.aiml

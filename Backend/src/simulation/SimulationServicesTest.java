@@ -16,18 +16,18 @@ public class SimulationServicesTest {
   }
 
   @Test
-  void oceanSimulationMentionsAstartes() {
+  void oceanSimulationMentionsApexOrGills() {
     BiomeSimulationService svc = new BiomeSimulationService();
     String report = svc.analyzeBiome("ocean", "");
     assertTrue(report.toLowerCase().contains("ocean") || report.contains("oceân"));
-    assertTrue(report.toLowerCase().contains("astartes") || report.contains("brânquias"));
+    assertTrue(report.toLowerCase().contains("apex") || report.contains("brânquias"));
   }
 
   @Test
-  void astartesKitForSuperEarth() {
-    AstartesKitService svc = new AstartesKitService();
+  void apexProtocolForSuperEarth() {
+    ApexProtocolService svc = new ApexProtocolService();
     String blueprint = svc.generateBlueprint("2.5", "CO2-rich");
-    assertTrue(blueprint.contains("ASTARTES KIT"));
+    assertTrue(blueprint.contains("APEX PROTOCOL"));
     assertTrue(blueprint.toLowerCase().contains("carbono") || blueprint.contains("carbon"));
     assertTrue(blueprint.contains("%"));
   }
@@ -50,10 +50,10 @@ public class SimulationServicesTest {
   }
 
   @Test
-  void commandRouterAstartes() {
+  void commandRouterApex() {
     CommandRouter router = new CommandRouter();
-    String out = router.route("astartes:2.5:CO2-rich");
+    String out = router.route("apex:2.5:CO2-rich");
     assertNotNull(out);
-    assertTrue(out.contains("ASTARTES KIT"));
+    assertTrue(out.contains("APEX PROTOCOL"));
   }
 }

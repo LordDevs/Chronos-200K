@@ -50,6 +50,9 @@ public class ServletMain {
         ctx.addServletMappingDecoded("/api", "ChatAPI");
         ctx.addServletMappingDecoded("/chat/api", "ChatAPI");
 
+        Tomcat.addServlet(ctx, "ColoniesAPI", "ColoniesAPI");
+        ctx.addServletMappingDecoded("/api/colonies", "ColoniesAPI");
+
         tomcat.start();
 
         ServerContainer wsContainer = (ServerContainer) ctx.getServletContext()

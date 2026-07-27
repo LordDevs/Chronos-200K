@@ -10,7 +10,7 @@ Acting as a deep-space colony central computer, the system calculates astrophysi
 ## 🌌 Key Scientific Pillars
 
 *   **Astrobiology & Exoplanet Logistics:** Simulates human deployment on extreme celestial bodies (e.g., high-gravity super-Earths, ocean worlds, hyper-dense jungle planets).
-*   **Biomechanical Enhancements ("The Astartes Kit"):** Generates architectural blueprints for synthetic organs, bio-engineered skeletal matrices, and nanorobotic neural networks required for environmental survival.
+*   **Biomechanical Enhancements ("Chronos Apex Protocol" / CAP):** Generates architectural blueprints for synthetic organs, bio-engineered skeletal matrices, and nanorobotic neural networks required for environmental survival.
 *   **Deep-Time Evolutionary Forecasting:** Predicts morphological and genetic changes (speciation) of isolated human populations over thousands of generations.
 
 ---
@@ -22,6 +22,7 @@ Acting as a deep-space colony central computer, the system calculates astrophysi
 *   [x] **Sci-Fi Tactical UI Prototype:** Dark-mode, terminal-inspired interface reflecting a starship command deck or bio-informatics lab.
 *   [x] **ExoplanetService (NASA TAP):** Live lookup of mass, radius, equilibrium temperature, estimated gravity, habitability proxy.
 *   [x] **Adaptive Learning Mode v1 (EvolutionEngine):** Deterministic deep-time trait forecasting from gravity / water / atmosphere / generations.
+*   [x] **Adaptive Learning Mode v2 (Colony Archive):** Save / load terraforming profiles; evolve from named colonies; HUD panel + `GET /api/colonies`.
 *   [x] **Sub-vocal Speech Command Integration:** Web Speech API (MIC + TTS) on the tactical HUD; same `/api` contract.
 
 ---
@@ -36,7 +37,7 @@ bash run.sh          # or run.bat on Windows
 
 Try in the HUD: `ANALYZE PLANET kepler-442 b` · `EVOLVE gravity 2g water 80 generations 1000` · `SHIP STATUS`.
 
-Docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/NASA_API.md`](docs/NASA_API.md) · [`docs/EVOLUTION_RULES.md`](docs/EVOLUTION_RULES.md) · [`docs/VOICE_IO.md`](docs/VOICE_IO.md)
+Docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/CHRONOS_LORE.md`](docs/CHRONOS_LORE.md) · [`docs/NASA_API.md`](docs/NASA_API.md) · [`docs/EVOLUTION_RULES.md`](docs/EVOLUTION_RULES.md) · [`docs/LEARNING_MODE.md`](docs/LEARNING_MODE.md) · [`docs/VOICE_IO.md`](docs/VOICE_IO.md)
 
 ---
 

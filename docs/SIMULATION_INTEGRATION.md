@@ -9,7 +9,7 @@ User utterance
     → Program AB (chronos/*.aiml) matches pattern
     → Template emits token (e.g. simulate:ocean)
     → MessageHandler.tryRoute()
-    → CommandRouter → BiomeSimulationService | AstartesKitService | SpeciationService
+    → CommandRouter → BiomeSimulationService | ApexProtocolService | SpeciationService
     → HTML log returned to HUD
 ```
 
@@ -18,19 +18,22 @@ User utterance
 | File | Role |
 |------|------|
 | `chronos_persona.aiml` | Identity, Commander Michel, LordDevs, protocols |
-| `sci_fi_simulation.aiml` | Jungle/ocean/Astartes/speciation triggers |
+| `sci_fi_simulation.aiml` | Jungle/ocean/Apex Protocol/speciation triggers |
 | `commands.aiml` | NASA exoplanet + EVOLVE routing |
 | `astronaut_cmds.aiml` | Ship telemetry |
+| `learning_mode.aiml` | Colony Archive (Learning Mode v2) |
+| `voice_cmds.aiml` | PT/EN spoken aliases |
 
 ## Routing tokens
 
 | Token | Example | Java handler |
 |-------|---------|--------------|
 | `simulate:<biome>[:g]` | `simulate:jungle:1.5` | `BiomeSimulationService` |
-| `astartes:<g>[:atmos]` | `astartes:2.5:CO2-rich` | `AstartesKitService` |
+| `apex:<g>[:atmos]` | `apex:2.5:CO2-rich` | `ApexProtocolService` |
 | `speciate:<years>[:biome]` | `speciate:200000:ocean` | `SpeciationService` |
 | `exoplanet:<name>` | `exoplanet:kepler-442 b` | `ExoplanetService` |
 | `evolve:<tokens>` | `evolve:2g:80:1000` | `EvolutionEngine` |
+| `learn:<action>[:payload]` | `learn:save:mars …` | `LearningModeService` |
 
 ## Physics catalog (hardcoded)
 
@@ -49,7 +52,7 @@ Defined in `Backend/src/simulation/PhysicsCatalog.java`.
 ```
 ANALYZE JUNGLE PLANET
 ANALYZE OCEAN PLANET
-ACTIVATE ASTARTES KIT
+ACTIVATE APEX PROTOCOL
 PREDICT EVOLUTION 200K ON OCEAN PLANET
 ANALYZE MARS
 WELCOME COMMANDER MICHEL

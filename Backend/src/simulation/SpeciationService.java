@@ -58,7 +58,7 @@ public class SpeciationService {
     private String describePhases(long years, String biome) {
         StringBuilder sb = new StringBuilder();
         if (years >= 500) {
-            sb.append("• Fase I (0–500a): adaptações fisiológicas reversíveis; kit Astartes suficiente.<br>");
+            sb.append("• Fase I (0–500a): adaptações fisiológicas reversíveis; Protocolo Apex suficiente.<br>");
         }
         if (years >= 5_000) {
             sb.append("• Fase II (500–5ka): deriva genética mensurável; seleção por gravidade/atmosfera.<br>");

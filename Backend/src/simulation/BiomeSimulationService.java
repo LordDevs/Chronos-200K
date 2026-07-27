@@ -64,7 +64,7 @@ public class BiomeSimulationService {
         sb.append("• Membranas interdigitais para correntes de ")
                 .append(String.format(Locale.US, "%.2fg", gravity)).append(".<br>");
         sb.append("• Implantes: brânquias auxiliares sintéticas, ossos de densidade variável.<br>");
-        sb.append("• Coração auxiliar (Astartes-class) para mergulhos abissais &gt; 400m.<br>");
+        sb.append("• Coração auxiliar (classe Apex) para mergulhos abissais &gt; 400m.<br>");
         sb.append("• Mutações: olhos adaptados a baixa luminosidade; metabolismo cetáceo parcial.<br>");
     }
 

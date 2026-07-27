@@ -26,4 +26,6 @@ Compact AIML form: `evolve:2g:80:1000`
 
 Survival probability starts at 0.75 and is penalized for extreme environments.
 
+**v2 (Colony Archive):** save named profiles with `LEARNING MODE SAVE` — see [`LEARNING_MODE.md`](LEARNING_MODE.md).
+
 Code: `Backend/src/evolution/`.

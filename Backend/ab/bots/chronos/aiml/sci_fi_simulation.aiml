@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml version="2.0">
-    <!-- SCI-FI SIMULATION — triggers routed to Java via simulate:/astartes:/speciate: tokens -->
+    <!-- SCI-FI SIMULATION — triggers routed to Java via simulate:/apex:/speciate: tokens -->
 
     <category>
         <pattern>ANALYZE JUNGLE PLANET</pattern>
@@ -48,33 +48,43 @@
     </category>
 
     <category>
-        <pattern>ACTIVATE ASTARTES KIT</pattern>
-        <template>astartes:2.5:CO2-rich</template>
+        <pattern>ACTIVATE APEX PROTOCOL</pattern>
+        <template>apex:2.5:CO2-rich</template>
     </category>
 
     <category>
-        <pattern>ACTIVATE ASTARTES KIT *</pattern>
-        <template>astartes:<star/></template>
+        <pattern>ACTIVATE APEX PROTOCOL *</pattern>
+        <template>apex:<star/></template>
     </category>
 
     <category>
-        <pattern>ASTARTES KIT</pattern>
-        <template>astartes:2.5:CO2-rich</template>
+        <pattern>APEX PROTOCOL</pattern>
+        <template>apex:2.5:CO2-rich</template>
     </category>
 
     <category>
-        <pattern>ASTARTES KIT * G</pattern>
-        <template>astartes:<star/>:N2-O2</template>
+        <pattern>APEX PROTOCOL * G</pattern>
+        <template>apex:<star/>:N2-O2</template>
+    </category>
+
+    <category>
+        <pattern>CHRONOS APEX PROTOCOL</pattern>
+        <template>apex:2.5:CO2-rich</template>
+    </category>
+
+    <category>
+        <pattern>ACTIVATE CAP</pattern>
+        <template>apex:2.5:CO2-rich</template>
     </category>
 
     <category>
         <pattern>BLUEPRINT SYNTHETIC ORGANS</pattern>
-        <template>astartes:2.0:thin</template>
+        <template>apex:2.0:thin</template>
     </category>
 
     <category>
         <pattern>CARBON MATRIX SKELETON</pattern>
-        <template>astartes:2.5:CO2-rich</template>
+        <template>apex:2.5:CO2-rich</template>
     </category>
 
     <category>

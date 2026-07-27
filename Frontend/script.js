@@ -5,6 +5,8 @@
   const input = document.getElementById("chatInput");
   const linkStatus = document.getElementById("linkStatus");
   const planetCards = document.getElementById("planetCards");
+  const colonyCards = document.getElementById("colonyCards");
+  const colonyForm = document.getElementById("colonyForm");
   const quickReplies = document.getElementById("quickReplies");
   const voiceBar = document.getElementById("voiceBar");
   const micBtn = document.getElementById("micBtn");
@@ -86,6 +88,9 @@
       if (lower.includes("planet") || lower.startsWith("exoplanet:") || lower.startsWith("analyze")) {
         upsertPlanetCard(message, reply);
       }
+      if (lower.includes("learning mode") || lower.includes("colony archive") || reply.includes("COLONY ARCHIVE")) {
+        refreshColonyCards();
+      }
     } catch (err) {
       typing.remove();
       linkStatus.classList.remove("online");
@@ -118,6 +123,70 @@
       <div class="body">${rawHtml}</div>
     `;
   }
+
+  function buildColonySaveCommand() {
+    const name = document.getElementById("colonyName").value.trim();
+    const gravity = document.getElementById("colonyGravity").value;
+    const water = document.getElementById("colonyWater").value;
+    const temp = document.getElementById("colonyTemp").value;
+    const gens = document.getElementById("colonyGens").value;
+    const atmo = document.getElementById("colonyAtmo").value;
+    const atmoToken = atmo.toLowerCase().includes("co2") ? "co2"
+      : atmo.toLowerCase().includes("ch4") ? "ch4"
+      : atmo.toLowerCase().includes("thin") ? "thin"
+      : "";
+    const atmoPart = atmoToken ? ` ${atmoToken}` : "";
+    return `LEARNING MODE SAVE ${name} gravity ${gravity}g water ${water} temp ${temp}${atmoPart} generations ${gens}`;
+  }
+
+  function formatColonyMeta(c) {
+    return `g=${c.gravityG} · água=${c.waterPercent}% · ${c.temperatureC}°C · ${c.atmosphere} · ${c.generations} gen.`;
+  }
+
+  async function refreshColonyCards() {
+    if (!colonyCards) return;
+    try {
+      const res = await fetch(`${window.location.origin}/api/colonies`);
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const colonies = await res.json();
+      colonyCards.innerHTML = "";
+      if (!colonies.length) {
+        colonyCards.innerHTML = '<p class="colony-empty">Nenhum perfil guardado. Use o formulário ou LEARNING MODE SAVE.</p>';
+        return;
+      }
+      colonies.forEach((c) => {
+        const card = document.createElement("article");
+        card.className = "colony-card";
+        card.dataset.colony = c.name;
+        card.innerHTML = `
+          <h3>${c.name}</h3>
+          <div class="meta">${formatColonyMeta(c)}</div>
+          <div class="actions">
+            <button type="button" data-evolve="${c.name}">Evoluir</button>
+            <button type="button" data-load="${c.name}">Carregar</button>
+            <button type="button" data-delete="${c.name}">Apagar</button>
+          </div>
+        `;
+        colonyCards.appendChild(card);
+      });
+    } catch (err) {
+      console.warn("Colony refresh failed", err);
+    }
+  }
+
+  colonyCards?.addEventListener("click", (e) => {
+    const evolve = e.target.closest("[data-evolve]");
+    const load = e.target.closest("[data-load]");
+    const del = e.target.closest("[data-delete]");
+    if (evolve) sendToChronos(`LEARNING MODE EVOLVE ${evolve.dataset.evolve}`);
+    if (load) sendToChronos(`LEARNING MODE LOAD ${load.dataset.load}`);
+    if (del) sendToChronos(`LEARNING MODE DELETE ${del.dataset.delete}`);
+  });
+
+  colonyForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    sendToChronos(buildColonySaveCommand());
+  });
 
   function setupVoiceUi() {
     if (!voice.isSupported()) {
@@ -168,6 +237,7 @@
   });
 
   setupVoiceUi();
+  refreshColonyCards();
 
   appendMessage(
     "Sistema CHRONOS inicializado. Canal tático pronto. Use os atalhos, texto ou microfone (PT).",

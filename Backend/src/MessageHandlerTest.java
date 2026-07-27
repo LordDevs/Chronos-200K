@@ -51,10 +51,10 @@ public class MessageHandlerTest {
     }
 
     @Test
-    void testAimlAstartesKitRouting() {
-        String result = messageHandler.processMessage("ACTIVATE ASTARTES KIT");
+    void testAimlApexProtocolRouting() {
+        String result = messageHandler.processMessage("ACTIVATE APEX PROTOCOL");
         assertNotNull(result);
-        assertTrue(result.contains("ASTARTES KIT"), result);
+        assertTrue(result.contains("APEX PROTOCOL"), result);
     }
 
     @Test
@@ -72,10 +72,10 @@ public class MessageHandlerTest {
     }
 
     @Test
-    void testVoicePortugueseAstartesKit() {
-        String result = messageHandler.processMessage("ATIVAR KIT ASTARTES");
+    void testVoicePortugueseApexProtocol() {
+        String result = messageHandler.processMessage("ATIVAR PROTOCOLO APEX");
         assertNotNull(result);
-        assertTrue(result.contains("ASTARTES KIT"), result);
+        assertTrue(result.contains("APEX PROTOCOL"), result);
     }
 
     @Test
@@ -108,5 +108,26 @@ public class MessageHandlerTest {
         String result = messageHandler.processMessage("PREVER EVOLUCAO 200 MIL");
         assertNotNull(result);
         assertTrue(result.contains("SPECIATION"), result);
+    }
+
+    @Test
+    void testLearningModeSaveAndEvolve() {
+        String saved = messageHandler.processMessage(
+                "LEARNING MODE SAVE test-habitat gravity 1.5g water 60 temp 20 generations 800");
+        assertNotNull(saved);
+        assertTrue(saved.contains("COLONY ARCHIVE"), saved);
+
+        String evolved = messageHandler.processMessage("LEARNING MODE EVOLVE test-habitat");
+        assertNotNull(evolved);
+        assertTrue(evolved.contains("EVOLUTION FORECAST") || evolved.contains("LEARNING MODE v2"), evolved);
+
+        messageHandler.processMessage("LEARNING MODE DELETE test-habitat");
+    }
+
+    @Test
+    void testLearningModeList() {
+        String result = messageHandler.processMessage("LEARNING MODE LIST");
+        assertNotNull(result);
+        assertTrue(result.contains("COLONY ARCHIVE"), result);
     }
 }

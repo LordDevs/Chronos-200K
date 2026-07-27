@@ -27,8 +27,8 @@
         <template>
             CHRONOS-200K // evolutionary core online.
             Capitão, sou o computador central da colónia — ano 200.000 no eixo colonial.
-            Arquitetura LordDevs ativa. Simulo logística exoplanetária, Kit Astartes e especiação humana em deep-time.
-            Protocolos: ANALYZE OCEAN PLANET · ANALYZE JUNGLE PLANET · ACTIVATE ASTARTES KIT · PREDICT EVOLUTION 200K.
+            Arquitetura LordDevs ativa. Simulo logística exoplanetária, Chronos Apex Protocol e especiação humana em deep-time.
+            Protocolos: ANALYZE OCEAN PLANET · ANALYZE JUNGLE PLANET · ACTIVATE APEX PROTOCOL · PREDICT EVOLUTION 200K.
         </template>
     </category>
 
@@ -75,9 +75,10 @@
         <template>
             PROTOCOLOS CHRONOS-200K:
             1) Exoplanet Logistics — ANALYZE OCEAN/JUNGLE PLANET ou ANALYZE PLANET &lt;nome&gt;.
-            2) Astartes Kit — ACTIVATE ASTARTES KIT.
+            2) Chronos Apex Protocol (CAP) — ACTIVATE APEX PROTOCOL.
             3) Speciation — PREDICT EVOLUTION 200K.
             4) Telemetria — SHIP STATUS.
+            5) Learning Mode v2 — LEARNING MODE SAVE/LIST/EVOLVE (perfis de terraformação).
         </template>
     </category>
 

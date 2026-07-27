@@ -21,7 +21,7 @@ public class TraitCalculator {
             traits.add(String.format(
                     "Densidade óssea elevada (+%.0f%%) e estatura média reduzida — adaptação a %.1fg",
                     15 * intensity, g));
-            traits.add("Massa muscular hipertrofiada; articulações reforçadas (matriz esquelética Astartes)");
+            traits.add("Massa muscular hipertrofiada; articulações reforçadas (matriz esquelética Apex)");
         } else if (g < 0.7) {
             traits.add(String.format(
                     "Ossatura mais leve e membros alongados — microgravidade relativa (%.2fg)", g));

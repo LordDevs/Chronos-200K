@@ -1,10 +1,12 @@
 import evolution.EvolutionEngine;
+import evolution.LearningModeService;
 import org.alicebot.ab.Chat;
 import simulation.CommandRouter;
 
 public class MessageHandler {
     private Chat chat;
     private final EvolutionEngine evolutionEngine = new EvolutionEngine();
+    private final LearningModeService learningModeService = new LearningModeService();
     private final CommandRouter commandRouter = new CommandRouter();
 
     public MessageHandler() {
@@ -60,6 +62,9 @@ public class MessageHandler {
         if (lower.startsWith("evolve:")) {
             return handleEvolve(text.substring("evolve:".length()).trim());
         }
+        if (lower.startsWith("learn:")) {
+            return handleLearn(text.substring("learn:".length()).trim());
+        }
 
         String simulation = commandRouter.route(text.trim());
         if (simulation != null) {
@@ -81,5 +86,18 @@ public class MessageHandler {
             return "Formato: EVOLVE gravity 2g water 80 generations 1000";
         }
         return evolutionEngine.simulateFromRaw(tokens);
+    }
+
+    private String handleLearn(String payload) {
+        if (payload == null || payload.isBlank()) {
+            return learningModeService.handle("", "");
+        }
+        int colon = payload.indexOf(':');
+        if (colon < 0) {
+            return learningModeService.handle(payload.trim(), "");
+        }
+        String action = payload.substring(0, colon).trim();
+        String rest = payload.substring(colon + 1).trim();
+        return learningModeService.handle(action, rest);
     }
 }

@@ -7,12 +7,14 @@
 0,ANALYZE OCEAN PLANET *,*,*,simulate:ocean:<star/>,sci_fi_simulation.aiml
 0,ANALYSE OCEAN PLANET,*,*,simulate:ocean,sci_fi_simulation.aiml
 0,OCEAN WORLD,*,*,simulate:ocean,sci_fi_simulation.aiml
-0,ACTIVATE ASTARTES KIT,*,*,astartes:2.5:CO2-rich,sci_fi_simulation.aiml
-0,ACTIVATE ASTARTES KIT *,*,*,astartes:<star/>,sci_fi_simulation.aiml
-0,ASTARTES KIT,*,*,astartes:2.5:CO2-rich,sci_fi_simulation.aiml
-0,ASTARTES KIT * G,*,*,astartes:<star/>:N2-O2,sci_fi_simulation.aiml
-0,BLUEPRINT SYNTHETIC ORGANS,*,*,astartes:2.0:thin,sci_fi_simulation.aiml
-0,CARBON MATRIX SKELETON,*,*,astartes:2.5:CO2-rich,sci_fi_simulation.aiml
+0,ACTIVATE APEX PROTOCOL,*,*,apex:2.5:CO2-rich,sci_fi_simulation.aiml
+0,ACTIVATE APEX PROTOCOL *,*,*,apex:<star/>,sci_fi_simulation.aiml
+0,APEX PROTOCOL,*,*,apex:2.5:CO2-rich,sci_fi_simulation.aiml
+0,APEX PROTOCOL * G,*,*,apex:<star/>:N2-O2,sci_fi_simulation.aiml
+0,CHRONOS APEX PROTOCOL,*,*,apex:2.5:CO2-rich,sci_fi_simulation.aiml
+0,ACTIVATE CAP,*,*,apex:2.5:CO2-rich,sci_fi_simulation.aiml
+0,BLUEPRINT SYNTHETIC ORGANS,*,*,apex:2.0:thin,sci_fi_simulation.aiml
+0,CARBON MATRIX SKELETON,*,*,apex:2.5:CO2-rich,sci_fi_simulation.aiml
 0,PREDICT EVOLUTION 200K,*,*,speciate:200000:baseline,sci_fi_simulation.aiml
 0,PREDICT EVOLUTION 200000,*,*,speciate:200000:baseline,sci_fi_simulation.aiml
 0,PREDICT EVOLUTION 200K ON JUNGLE PLANET,*,*,speciate:200000:jungle,sci_fi_simulation.aiml

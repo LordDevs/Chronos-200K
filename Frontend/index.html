@@ -32,8 +32,9 @@
       <div class="quick-replies" id="quickReplies">
         <button type="button" data-cmd="ANALYZE PLANET kepler-442 b">Analisar exoplaneta</button>
         <button type="button" data-cmd="ANALYZE OCEAN PLANET">Ocean world</button>
-        <button type="button" data-cmd="ACTIVATE ASTARTES KIT">Astartes Kit</button>
+        <button type="button" data-cmd="ACTIVATE APEX PROTOCOL">Apex Protocol</button>
         <button type="button" data-cmd="PREDICT EVOLUTION 200K">Evolução 200K</button>
+        <button type="button" data-cmd="LEARNING MODE LIST">Arquivo colonial</button>
         <button type="button" data-cmd="SHIP STATUS">Status da nave</button>
       </div>
       <form id="chatForm" class="chat-input-row">
@@ -46,6 +47,27 @@
     <section class="panel data-panel" aria-label="Exoplanet telemetry">
       <div class="panel-title">TELEMETRY // Exoplanets</div>
       <div id="planetCards" class="planet-cards"></div>
+    </section>
+
+    <section class="panel colony-panel" aria-label="Colony archive">
+      <div class="panel-title">COLONY ARCHIVE // Learning Mode v2</div>
+      <form id="colonyForm" class="colony-form">
+        <input type="text" id="colonyName" placeholder="Nome (ex: mars-colony)" required>
+        <div class="colony-fields">
+          <label>g <input type="number" id="colonyGravity" step="0.01" min="0.1" max="5" value="1.0"></label>
+          <label>água % <input type="number" id="colonyWater" step="1" min="0" max="100" value="50"></label>
+          <label>temp °C <input type="number" id="colonyTemp" step="1" value="15"></label>
+          <label>gerações <input type="number" id="colonyGens" step="100" min="100" value="1000"></label>
+        </div>
+        <select id="colonyAtmo" aria-label="Atmosphere">
+          <option value="N2-O2">N2-O2</option>
+          <option value="CO2-rich">CO2-rich</option>
+          <option value="CH4-rich">CH4-rich</option>
+          <option value="thin">thin</option>
+        </select>
+        <button type="submit" class="colony-save-btn">Guardar perfil</button>
+      </form>
+      <div id="colonyCards" class="colony-cards"></div>
     </section>
   </main>
 
