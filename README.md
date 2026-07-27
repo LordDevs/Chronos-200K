@@ -22,7 +22,7 @@ Acting as a deep-space colony central computer, the system calculates astrophysi
 *   [x] **Sci-Fi Tactical UI Prototype:** Dark-mode, terminal-inspired interface reflecting a starship command deck or bio-informatics lab.
 *   [x] **ExoplanetService (NASA TAP):** Live lookup of mass, radius, equilibrium temperature, estimated gravity, habitability proxy.
 *   [x] **Adaptive Learning Mode v1 (EvolutionEngine):** Deterministic deep-time trait forecasting from gravity / water / atmosphere / generations.
-*   [ ] **Sub-vocal Speech Command Integration:** Hands-free Voice Input/Output systems designed to mimic astronaut suit telemetry interfaces.
+*   [x] **Sub-vocal Speech Command Integration:** Web Speech API (MIC + TTS) on the tactical HUD; same `/api` contract.
 
 ---
 
@@ -36,7 +36,7 @@ bash run.sh          # or run.bat on Windows
 
 Try in the HUD: `ANALYZE PLANET kepler-442 b` · `EVOLVE gravity 2g water 80 generations 1000` · `SHIP STATUS`.
 
-Docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/NASA_API.md`](docs/NASA_API.md) · [`docs/EVOLUTION_RULES.md`](docs/EVOLUTION_RULES.md)
+Docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/NASA_API.md`](docs/NASA_API.md) · [`docs/EVOLUTION_RULES.md`](docs/EVOLUTION_RULES.md) · [`docs/VOICE_IO.md`](docs/VOICE_IO.md)
 
 ---
 

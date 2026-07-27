@@ -6,9 +6,24 @@
   const linkStatus = document.getElementById("linkStatus");
   const planetCards = document.getElementById("planetCards");
   const quickReplies = document.getElementById("quickReplies");
+  const voiceBar = document.getElementById("voiceBar");
+  const micBtn = document.getElementById("micBtn");
+  const ttsBtn = document.getElementById("ttsBtn");
+  const voiceStatus = document.getElementById("voiceStatus");
 
   const seedPlanets = ["kepler-442 b", "proxima centauri b", "k2-18 b"];
   const FETCH_MS = 15000;
+
+  const voice = window.createVoiceChannel({
+    onTranscript: (text) => {
+      input.value = text;
+      sendToChronos(text);
+    },
+    onStatus: (msg) => {
+      if (voiceStatus) voiceStatus.textContent = msg;
+    },
+    onError: (msg) => appendMessage(msg, "bot"),
+  });
 
   function appendMessage(html, sender) {
     const div = document.createElement("div");
@@ -51,11 +66,13 @@
     }
   }
 
-  async function sendToChronos(text) {
+  async function sendToChronos(text, { showUser = true } = {}) {
     const message = text.trim();
     if (!message) return;
 
-    appendMessage(message, "user");
+    if (showUser) {
+      appendMessage(message, "user");
+    }
     const typing = showTyping();
 
     try {
@@ -63,6 +80,7 @@
       typing.remove();
       linkStatus.classList.add("online");
       appendMessage(reply, "bot");
+      voice.speakPlain(reply);
 
       const lower = message.toLowerCase();
       if (lower.includes("planet") || lower.startsWith("exoplanet:") || lower.startsWith("analyze")) {
@@ -101,10 +119,45 @@
     `;
   }
 
+  function setupVoiceUi() {
+    if (!voice.isSupported()) {
+      if (voiceBar) voiceBar.classList.add("voice-unsupported");
+      if (voiceStatus) voiceStatus.textContent = "VOZ // não suportada (use Chrome/Edge)";
+      if (micBtn) micBtn.disabled = true;
+      return;
+    }
+
+    micBtn?.addEventListener("click", () => {
+      const on = voice.toggleListen();
+      document.body.classList.toggle("helmet-listening", on);
+      micBtn.classList.toggle("active", on);
+      micBtn.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+
+    ttsBtn?.addEventListener("click", () => {
+      const on = voice.toggleTts();
+      ttsBtn.classList.toggle("active", on);
+      ttsBtn.setAttribute("aria-pressed", on ? "true" : "false");
+      ttsBtn.title = on ? "Voz CHRONOS ligada" : "Voz CHRONOS desligada";
+      if (!on) voice.stopSpeak();
+    });
+
+    if (ttsBtn) {
+      ttsBtn.classList.add("active");
+      ttsBtn.setAttribute("aria-pressed", "true");
+    }
+
+    // Chrome loads voices async
+    window.speechSynthesis?.addEventListener("voiceschanged", () => {}, { once: true });
+  }
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const value = input.value;
     input.value = "";
+    voice.stopListen();
+    document.body.classList.remove("helmet-listening");
+    micBtn?.classList.remove("active");
     sendToChronos(value);
   });
 
@@ -114,14 +167,14 @@
     sendToChronos(btn.dataset.cmd);
   });
 
-  // Paint UI immediately — do not wait on NASA
+  setupVoiceUi();
+
   appendMessage(
-    "Sistema CHRONOS inicializado. Canal tático pronto. Use os atalhos ou digite um comando.",
+    "Sistema CHRONOS inicializado. Canal tático pronto. Use os atalhos, texto ou microfone (PT).",
     "bot"
   );
   linkStatus.classList.add("online");
 
-  // Background telemetry (failures must not freeze the bridge)
   seedPlanets.forEach((planet, i) => {
     setTimeout(async () => {
       try {

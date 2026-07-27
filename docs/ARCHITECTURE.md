@@ -14,6 +14,5 @@ Frontend (HUD)  --POST /api-->  ChatAPI  -->  MessageHandler
 - **AIML** (`Backend/ab/bots/chronos/aiml/`): persona, command phrasing, ship flavor text.
 - **Simulation** (`Backend/src/simulation/`): jungle/ocean logistics, Astartes Kit, 200k speciation.
 - **Java services**: dynamic science (NASA lookup, evolution math).
-- **WebSocket** `/chat` remains available; the HUD uses HTTP POST for simplicity.
-
-Voice I/O (Web Speech API) is deferred to a later phase; the same `/chat/api` contract applies.
+- **Voice I/O** (`Frontend/voice.js`): Web Speech API — mic → text → `/api`; TTS for bot replies (client-only).
+- **WebSocket** `/ws` remains available; the HUD uses HTTP `POST /api`.

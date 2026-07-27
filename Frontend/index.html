@@ -10,6 +10,7 @@
 <body>
   <div class="hud-frame" aria-hidden="true"></div>
   <div class="scanlines" aria-hidden="true"></div>
+  <div class="visor-overlay" id="visorOverlay" aria-hidden="true"></div>
 
   <header class="bridge-header">
     <p class="brand">CHRONOS-200K</p>
@@ -21,6 +22,11 @@
       <div class="panel-title">
         <span>CHRONOS // Ship AI</span>
         <span class="status-dot" id="linkStatus" title="link">●</span>
+      </div>
+      <div class="voice-bar" id="voiceBar" aria-label="Sub-vocal command interface">
+        <button type="button" id="micBtn" class="voice-btn" title="Comando de voz (PT)" aria-pressed="false">🎙 MIC</button>
+        <button type="button" id="ttsBtn" class="voice-btn" title="Voz CHRONOS ligada" aria-pressed="true">🔊 TTS</button>
+        <span class="voice-status" id="voiceStatus">VOZ // standby</span>
       </div>
       <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
       <div class="quick-replies" id="quickReplies">
@@ -43,6 +49,7 @@
     </section>
   </main>
 
+  <script src="voice.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

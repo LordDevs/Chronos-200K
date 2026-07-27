@@ -31,9 +31,12 @@
 
     <category>
         <pattern>CHECK OXYGEN LEVELS</pattern>
-        <template>
-            Sensores de O2: níveis estáveis a 21%. Reciclagem biológica operacional.
-        </template>
+        <template><srai>OXYGEN</srai></template>
+    </category>
+
+    <category>
+        <pattern>CHECK OXYGEN</pattern>
+        <template><srai>OXYGEN</srai></template>
     </category>
 
     <category>
