@@ -1,8 +1,30 @@
 /**
  * CHRONOS voice channel — Web Speech API (browser-only).
+ * Locale: pt-PT (default) | en-US
  */
 
-/** Normalize pt-PT STT quirks before AIML routing. */
+const VOICE_LOCALES = {
+  "pt-PT": {
+    code: "pt-PT",
+    label: "PT",
+    voicePrefix: "pt",
+    statusListen: "VOZ // a ouvir…",
+    statusStandby: "VOZ // standby",
+    statusError: "VOZ // erro",
+  },
+  "en-US": {
+    code: "en-US",
+    label: "EN",
+    voicePrefix: "en",
+    statusListen: "VOICE // listening…",
+    statusStandby: "VOICE // standby",
+    statusError: "VOICE // error",
+  },
+};
+
+const STORAGE_KEY = "chronos-voice-lang";
+
+/** Normalize STT quirks before AIML routing (PT + EN). */
 window.normalizeVoiceTranscript = function normalizeVoiceTranscript(raw) {
   let text = (raw || "").trim().replace(/\s+/g, " ");
   if (!text) return text;
@@ -15,6 +37,7 @@ window.normalizeVoiceTranscript = function normalizeVoiceTranscript(raw) {
     .trim();
 
   const exact = {
+    // PT
     "ola": "OLA",
     "ola chronos": "OLA CHRONOS",
     "bom dia": "BOM DIA",
@@ -37,12 +60,37 @@ window.normalizeVoiceTranscript = function normalizeVoiceTranscript(raw) {
     "evolucao 200 mil anos": "EVOLUCAO 200 MIL ANOS",
     "ajuda": "AJUDA",
     "quem es tu": "QUEM ES TU",
+    // EN
+    "hello": "HI",
+    "hi chronos": "OLA CHRONOS",
+    "good morning": "GOOD MORNING",
+    "ship status": "SHIP STATUS",
+    "check oxygen": "CHECK OXYGEN",
+    "check oxygen levels": "CHECK OXYGEN LEVELS",
+    "oxygen levels": "OXYGEN LEVELS",
+    "analyze ocean planet": "ANALYZE OCEAN PLANET",
+    "analyse ocean planet": "ANALYZE OCEAN PLANET",
+    "analyze jungle planet": "ANALYZE JUNGLE PLANET",
+    "analyse jungle planet": "ANALYZE JUNGLE PLANET",
+    "activate apex protocol": "ACTIVATE APEX PROTOCOL",
+    "apex protocol": "APEX PROTOCOL",
+    "activate cap": "ACTIVATE CAP",
+    "predict evolution 200k": "PREDICT EVOLUTION 200K",
+    "predict evolution 200 k": "PREDICT EVOLUTION 200K",
+    "predict evolution two hundred thousand": "PREDICT EVOLUTION 200K",
+    "who are you": "WHO ARE YOU",
+    "help": "HELP",
+    "system protocols": "SYSTEM PROTOCOLS",
+    "list colonies": "LIST COLONIES",
+    "colony archive": "COLONY ARCHIVE",
   };
 
   if (exact[key]) return exact[key];
 
   text = text.replace(/\b200\s*mil\b/gi, "200K");
   text = text.replace(/\bduzentos\s*mil\b/gi, "200K");
+  text = text.replace(/\btwo\s*hundred\s*thousand\b/gi, "200K");
+  text = text.replace(/\b200\s*k\b/gi, "200K");
 
   // STT often drops hyphens in exoplanet names: "kepler 442 b" → "kepler-442 b"
   text = text.replace(/\bkepler\s+(\d+)\s+([a-z])\b/gi, "kepler-$1 $2");
@@ -61,6 +109,13 @@ window.createVoiceChannel = function createVoiceChannel({ onTranscript, onStatus
   let recognition = null;
   let listening = false;
   let ttsEnabled = true;
+  let lang =
+    (typeof localStorage !== "undefined" && localStorage.getItem(STORAGE_KEY)) || "pt-PT";
+  if (!VOICE_LOCALES[lang]) lang = "pt-PT";
+
+  function locale() {
+    return VOICE_LOCALES[lang];
+  }
 
   function setStatus(msg) {
     if (onStatus) onStatus(msg);
@@ -72,17 +127,59 @@ window.createVoiceChannel = function createVoiceChannel({ onTranscript, onStatus
     return (el.textContent || "").replace(/\s+/g, " ").trim();
   }
 
+  function pickVoice(utterLang) {
+    const voices = window.speechSynthesis.getVoices();
+    const prefix = locale().voicePrefix;
+    return (
+      voices.find((v) => v.lang === utterLang) ||
+      voices.find((v) => v.lang.toLowerCase().startsWith(prefix)) ||
+      null
+    );
+  }
+
   function speak(text) {
     if (!ttsEnabled || !text) return;
     window.speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(text.slice(0, 600));
-    utter.lang = "pt-PT";
+    utter.lang = lang;
     utter.rate = 0.95;
     utter.pitch = 0.9;
-    const voices = window.speechSynthesis.getVoices();
-    const ptVoice = voices.find((v) => v.lang.startsWith("pt"));
-    if (ptVoice) utter.voice = ptVoice;
+    const match = pickVoice(lang);
+    if (match) utter.voice = match;
     window.speechSynthesis.speak(utter);
+  }
+
+  function bindRecognitionHandlers(rec) {
+    rec.onstart = () => {
+      listening = true;
+      setStatus(locale().statusListen);
+    };
+
+    rec.onend = () => {
+      listening = false;
+      setStatus(locale().statusStandby);
+    };
+
+    rec.onerror = (ev) => {
+      listening = false;
+      const msg =
+        ev.error === "not-allowed"
+          ? lang.startsWith("pt")
+            ? "Microfone bloqueado. Permita o acesso no browser."
+            : "Microphone blocked. Allow access in the browser."
+          : lang.startsWith("pt")
+            ? `Erro de voz: ${ev.error}`
+            : `Voice error: ${ev.error}`;
+      setStatus(locale().statusError);
+      if (onError) onError(msg);
+    };
+
+    rec.onresult = (ev) => {
+      const transcript = ev.results[0][0].transcript.trim();
+      if (transcript && onTranscript) {
+        onTranscript(window.normalizeVoiceTranscript(transcript));
+      }
+    };
   }
 
   function ensureRecognition() {
@@ -90,39 +187,27 @@ window.createVoiceChannel = function createVoiceChannel({ onTranscript, onStatus
     if (recognition) return recognition;
 
     recognition = new SpeechRecognition();
-    recognition.lang = "pt-PT";
+    recognition.lang = lang;
     recognition.interimResults = false;
     recognition.continuous = false;
     recognition.maxAlternatives = 1;
-
-    recognition.onstart = () => {
-      listening = true;
-      setStatus("VOZ // a ouvir…");
-    };
-
-    recognition.onend = () => {
-      listening = false;
-      setStatus("VOZ // standby");
-    };
-
-    recognition.onerror = (ev) => {
-      listening = false;
-      const msg =
-        ev.error === "not-allowed"
-          ? "Microfone bloqueado. Permita o acesso no browser."
-          : `Erro de voz: ${ev.error}`;
-      setStatus("VOZ // erro");
-      if (onError) onError(msg);
-    };
-
-    recognition.onresult = (ev) => {
-      const transcript = ev.results[0][0].transcript.trim();
-      if (transcript && onTranscript) {
-        onTranscript(window.normalizeVoiceTranscript(transcript));
-      }
-    };
-
+    bindRecognitionHandlers(recognition);
     return recognition;
+  }
+
+  function rebuildRecognition() {
+    const wasListening = listening;
+    if (recognition) {
+      try {
+        if (listening) recognition.stop();
+      } catch (_) {
+        /* ignore */
+      }
+      recognition = null;
+    }
+    listening = false;
+    ensureRecognition();
+    return wasListening;
   }
 
   return {
@@ -131,6 +216,28 @@ window.createVoiceChannel = function createVoiceChannel({ onTranscript, onStatus
     isListening: () => listening,
 
     isTtsEnabled: () => ttsEnabled,
+
+    getLang: () => lang,
+
+    getLangLabel: () => locale().label,
+
+    /** @param {"pt-PT"|"en-US"} next */
+    setLang(next) {
+      if (!VOICE_LOCALES[next] || next === lang) return lang;
+      lang = next;
+      try {
+        localStorage.setItem(STORAGE_KEY, lang);
+      } catch (_) {
+        /* ignore */
+      }
+      rebuildRecognition();
+      setStatus(locale().statusStandby + ` · ${locale().label}`);
+      return lang;
+    },
+
+    toggleLang() {
+      return this.setLang(lang === "pt-PT" ? "en-US" : "pt-PT");
+    },
 
     toggleTts() {
       ttsEnabled = !ttsEnabled;
@@ -142,7 +249,11 @@ window.createVoiceChannel = function createVoiceChannel({ onTranscript, onStatus
       const rec = ensureRecognition();
       if (!rec) {
         if (onError) {
-          onError("Reconhecimento de voz não suportado neste browser. Use Chrome ou Edge.");
+          onError(
+            lang.startsWith("pt")
+              ? "Reconhecimento de voz não suportado neste browser. Use Chrome ou Edge."
+              : "Speech recognition not supported. Use Chrome or Edge."
+          );
         }
         return false;
       }
@@ -151,10 +262,17 @@ window.createVoiceChannel = function createVoiceChannel({ onTranscript, onStatus
         return false;
       }
       try {
+        rec.lang = lang;
         rec.start();
         return true;
       } catch (e) {
-        if (onError) onError("Não foi possível iniciar o microfone.");
+        if (onError) {
+          onError(
+            lang.startsWith("pt")
+              ? "Não foi possível iniciar o microfone."
+              : "Could not start the microphone."
+          );
+        }
         return false;
       }
     },

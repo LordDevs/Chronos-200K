@@ -403,6 +403,10 @@ body.helmet-listening .hud-frame {
   animation: micGlow 1.2s ease-in-out infinite;
 }
 
+.voice-btn.lang-btn.active {
+  animation: none;
+}
+
 .voice-btn:disabled {
   cursor: not-allowed;
   opacity: 0.5;

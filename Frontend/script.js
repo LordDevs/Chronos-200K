@@ -11,6 +11,7 @@
   const voiceBar = document.getElementById("voiceBar");
   const micBtn = document.getElementById("micBtn");
   const ttsBtn = document.getElementById("ttsBtn");
+  const langBtn = document.getElementById("langBtn");
   const voiceStatus = document.getElementById("voiceStatus");
 
   const seedPlanets = ["kepler-442 b", "proxima centauri b", "k2-18 b"];
@@ -188,13 +189,28 @@
     sendToChronos(buildColonySaveCommand());
   });
 
+  function syncLangButton() {
+    if (!langBtn) return;
+    const label = voice.getLangLabel();
+    langBtn.textContent = label;
+    langBtn.title =
+      label === "PT"
+        ? "Idioma de voz: Português (clique para EN)"
+        : "Voice language: English (click for PT)";
+    langBtn.setAttribute("aria-pressed", label === "EN" ? "true" : "false");
+    langBtn.classList.toggle("active", label === "EN");
+  }
+
   function setupVoiceUi() {
     if (!voice.isSupported()) {
       if (voiceBar) voiceBar.classList.add("voice-unsupported");
       if (voiceStatus) voiceStatus.textContent = "VOZ // não suportada (use Chrome/Edge)";
       if (micBtn) micBtn.disabled = true;
+      if (langBtn) langBtn.disabled = true;
       return;
     }
+
+    syncLangButton();
 
     micBtn?.addEventListener("click", () => {
       const on = voice.toggleListen();
@@ -209,6 +225,15 @@
       ttsBtn.setAttribute("aria-pressed", on ? "true" : "false");
       ttsBtn.title = on ? "Voz CHRONOS ligada" : "Voz CHRONOS desligada";
       if (!on) voice.stopSpeak();
+    });
+
+    langBtn?.addEventListener("click", () => {
+      voice.stopListen();
+      document.body.classList.remove("helmet-listening");
+      micBtn?.classList.remove("active");
+      micBtn?.setAttribute("aria-pressed", "false");
+      voice.toggleLang();
+      syncLangButton();
     });
 
     if (ttsBtn) {
