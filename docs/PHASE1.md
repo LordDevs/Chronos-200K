@@ -25,7 +25,7 @@ Chronos-200K Phase 1 is **done**. This file replaces the old LEARN cleanup howto
 ## Intentionally deferred (not Phase 1 blockers)
 
 - Rename on-disk folders `Backend/` → `backend/` and `Frontend/` → `frontend/` (breaks Java/run paths; do as a dedicated refactor)
-- Local Windows folder may still be named `chatbotlearn` until renamed to `Chronos-200K`
+- Local Windows folder: if Cursor still has `Projects\chatbotlearn` open, rename manually to `Chronos-200K` after closing the IDE lock (`ren chatbotlearn Chronos-200K`)
 - GitHub profile pin UI (manual): pin Chronos-200K on https://github.com/LordDevs
 
 ## Phase boundary
