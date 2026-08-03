@@ -14,6 +14,18 @@ public class EvolutionReport {
         this.survivalProbability = survivalProbability;
     }
 
+    public EnvironmentProfile getProfile() {
+        return profile;
+    }
+
+    public List<String> getTraits() {
+        return traits;
+    }
+
+    public double getSurvivalProbability() {
+        return survivalProbability;
+    }
+
     public String toHtml() {
         StringBuilder sb = new StringBuilder();
         sb.append("EVOLUTION FORECAST // deep-time v1<br>");

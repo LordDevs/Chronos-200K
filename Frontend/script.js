@@ -86,7 +86,15 @@
       voice.speakPlain(reply);
 
       const lower = message.toLowerCase();
-      if (lower.includes("planet") || lower.startsWith("exoplanet:") || lower.startsWith("analyze")) {
+      if (
+        lower.includes("planet")
+        || lower.startsWith("exoplanet:")
+        || lower.startsWith("analyze")
+        || lower.startsWith("deep scan")
+        || lower.startsWith("deepscan:")
+        || lower.startsWith("compare")
+        || lower.includes("vault")
+      ) {
         upsertPlanetCard(message, reply);
       }
       if (lower.includes("learning mode") || lower.includes("colony archive") || reply.includes("COLONY ARCHIVE")) {

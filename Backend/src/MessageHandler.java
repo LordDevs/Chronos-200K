@@ -7,6 +7,7 @@ public class MessageHandler {
     private Chat chat;
     private final EvolutionEngine evolutionEngine = new EvolutionEngine();
     private final LearningModeService learningModeService = new LearningModeService();
+    private final ObservatoryService observatoryService = new ObservatoryService();
     private final CommandRouter commandRouter = new CommandRouter();
 
     public MessageHandler() {
@@ -58,6 +59,15 @@ public class MessageHandler {
 
         if (lower.startsWith("exoplanet:")) {
             return handleExoplanet(text.substring("exoplanet:".length()).trim());
+        }
+        if (lower.startsWith("deepscan:")) {
+            return observatoryService.deepScan(text.substring("deepscan:".length()).trim());
+        }
+        if (lower.startsWith("compare:")) {
+            return observatoryService.compare(text.substring("compare:".length()).trim());
+        }
+        if (lower.startsWith("vault:")) {
+            return observatoryService.handleVault(text.substring("vault:".length()).trim());
         }
         if (lower.startsWith("evolve:")) {
             return handleEvolve(text.substring("evolve:".length()).trim());

@@ -343,6 +343,52 @@
         <template>exoplanet:<star/></template>
     </category>
 
+    <!-- Observatory Channel (voice PT/EN) -->
+    <category>
+        <pattern>SCAN PROFUNDO DO PLANETA *</pattern>
+        <template>deepscan:<star/></template>
+    </category>
+
+    <category>
+        <pattern>SCAN PROFUNDO PLANETA *</pattern>
+        <template>deepscan:<star/></template>
+    </category>
+
+    <category>
+        <pattern>FAZER DEEP SCAN *</pattern>
+        <template>deepscan:<star/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARAR PLANETA * COM *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARAR O PLANETA * COM *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/></template>
+    </category>
+
+    <category>
+        <pattern>ARQUIVAR NO VAULT O PLANETA *</pattern>
+        <template>vault:archive:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ARQUIVAR PLANETA *</pattern>
+        <template>vault:archive:<star/></template>
+    </category>
+
+    <category>
+        <pattern>LISTAR O VAULT</pattern>
+        <template>vault:list</template>
+    </category>
+
+    <category>
+        <pattern>MOSTRAR ENTRADA DO VAULT *</pattern>
+        <template>vault:show:<star/></template>
+    </category>
+
     <!-- Learning Mode v2 (voice) -->
     <category>
         <pattern>GUARDAR COLONIA *</pattern>

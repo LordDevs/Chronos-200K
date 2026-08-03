@@ -83,6 +83,16 @@ window.normalizeVoiceTranscript = function normalizeVoiceTranscript(raw) {
     "system protocols": "SYSTEM PROTOCOLS",
     "list colonies": "LIST COLONIES",
     "colony archive": "COLONY ARCHIVE",
+    "deep scan": "DEEP SCAN PLANET kepler-442 b",
+    "deep scan planet": "DEEP SCAN PLANET kepler-442 b",
+    "scan profundo": "DEEP SCAN PLANET kepler-442 b",
+    "scan profundo kepler 442 b": "DEEP SCAN PLANET kepler-442 b",
+    "comparar planetas": "COMPARE PLANETS kepler-442 b AND proxima centauri b",
+    "compare planets": "COMPARE PLANETS kepler-442 b AND proxima centauri b",
+    "arquivar no vault": "VAULT ARCHIVE kepler-442 b",
+    "vault archive": "VAULT ARCHIVE kepler-442 b",
+    "listar vault": "VAULT LIST",
+    "vault list": "VAULT LIST",
   };
 
   if (exact[key]) return exact[key];
