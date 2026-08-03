@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <!-- Chronos Observatory Channel → ObservatoryService -->
+
+    <!-- Deep Scan -->
+    <category>
+        <pattern>DEEP SCAN PLANET *</pattern>
+        <template>deepscan:<star/></template>
+    </category>
+
+    <category>
+        <pattern>DEEP SCAN *</pattern>
+        <template>deepscan:<star/></template>
+    </category>
+
+    <category>
+        <pattern>OBSERVATORY SCAN *</pattern>
+        <template>deepscan:<star/></template>
+    </category>
+
+    <category>
+        <pattern>SCAN PROFUNDO *</pattern>
+        <template>deepscan:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ANALISE PROFUNDA *</pattern>
+        <template>deepscan:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ANALISE PROFUNDA DO PLANETA *</pattern>
+        <template>deepscan:<star/></template>
+    </category>
+
+    <!-- Compare (3 then 2) -->
+    <category>
+        <pattern>COMPARE PLANETS * AND * AND *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/>|<star index="3"/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARE PLANET * AND * AND *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/>|<star index="3"/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARE PLANETS * AND *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARE PLANET * AND *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARE * AND * AND *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/>|<star index="3"/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARE * AND *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARAR PLANETAS * E * E *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/>|<star index="3"/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARAR PLANETAS * E *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARAR * E * E *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/>|<star index="3"/></template>
+    </category>
+
+    <category>
+        <pattern>COMPARAR * E *</pattern>
+        <template>compare:<star index="1"/>|<star index="2"/></template>
+    </category>
+
+    <!-- Speciation Vault -->
+    <category>
+        <pattern>VAULT ARCHIVE *</pattern>
+        <template>vault:archive:<star/></template>
+    </category>
+
+    <category>
+        <pattern>VAULT LIST</pattern>
+        <template>vault:list</template>
+    </category>
+
+    <category>
+        <pattern>VAULT SHOW *</pattern>
+        <template>vault:show:<star/></template>
+    </category>
+
+    <category>
+        <pattern>VAULT DELETE *</pattern>
+        <template>vault:delete:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ARCHIVE TO VAULT *</pattern>
+        <template>vault:archive:<star/></template>
+    </category>
+
+    <category>
+        <pattern>SPECIATION VAULT LIST</pattern>
+        <template>vault:list</template>
+    </category>
+
+    <category>
+        <pattern>SPECIATION VAULT SHOW *</pattern>
+        <template>vault:show:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ARQUIVAR NO VAULT *</pattern>
+        <template>vault:archive:<star/></template>
+    </category>
+
+    <category>
+        <pattern>ARQUIVAR VAULT *</pattern>
+        <template>vault:archive:<star/></template>
+    </category>
+
+    <category>
+        <pattern>LISTAR VAULT</pattern>
+        <template>vault:list</template>
+    </category>
+
+    <category>
+        <pattern>MOSTRAR VAULT *</pattern>
+        <template>vault:show:<star/></template>
+    </category>
+
+    <category>
+        <pattern>APAGAR VAULT *</pattern>
+        <template>vault:delete:<star/></template>
+    </category>
+</aiml>

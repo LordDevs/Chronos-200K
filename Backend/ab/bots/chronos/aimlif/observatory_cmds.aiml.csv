@@ -1,0 +1,28 @@
+0,DEEP SCAN PLANET *,*,*,deepscan:<star/>,observatory_cmds.aiml
+0,DEEP SCAN *,*,*,deepscan:<star/>,observatory_cmds.aiml
+0,OBSERVATORY SCAN *,*,*,deepscan:<star/>,observatory_cmds.aiml
+0,SCAN PROFUNDO *,*,*,deepscan:<star/>,observatory_cmds.aiml
+0,ANALISE PROFUNDA *,*,*,deepscan:<star/>,observatory_cmds.aiml
+0,ANALISE PROFUNDA DO PLANETA *,*,*,deepscan:<star/>,observatory_cmds.aiml
+0,COMPARE PLANETS * AND * AND *,*,*,compare:<star index="1"/>|<star index="2"/>|<star index="3"/>,observatory_cmds.aiml
+0,COMPARE PLANET * AND * AND *,*,*,compare:<star index="1"/>|<star index="2"/>|<star index="3"/>,observatory_cmds.aiml
+0,COMPARE PLANETS * AND *,*,*,compare:<star index="1"/>|<star index="2"/>,observatory_cmds.aiml
+0,COMPARE PLANET * AND *,*,*,compare:<star index="1"/>|<star index="2"/>,observatory_cmds.aiml
+0,COMPARE * AND * AND *,*,*,compare:<star index="1"/>|<star index="2"/>|<star index="3"/>,observatory_cmds.aiml
+0,COMPARE * AND *,*,*,compare:<star index="1"/>|<star index="2"/>,observatory_cmds.aiml
+0,COMPARAR PLANETAS * E * E *,*,*,compare:<star index="1"/>|<star index="2"/>|<star index="3"/>,observatory_cmds.aiml
+0,COMPARAR PLANETAS * E *,*,*,compare:<star index="1"/>|<star index="2"/>,observatory_cmds.aiml
+0,COMPARAR * E * E *,*,*,compare:<star index="1"/>|<star index="2"/>|<star index="3"/>,observatory_cmds.aiml
+0,COMPARAR * E *,*,*,compare:<star index="1"/>|<star index="2"/>,observatory_cmds.aiml
+0,VAULT ARCHIVE *,*,*,vault:archive:<star/>,observatory_cmds.aiml
+0,VAULT LIST,*,*,vault:list,observatory_cmds.aiml
+0,VAULT SHOW *,*,*,vault:show:<star/>,observatory_cmds.aiml
+0,VAULT DELETE *,*,*,vault:delete:<star/>,observatory_cmds.aiml
+0,ARCHIVE TO VAULT *,*,*,vault:archive:<star/>,observatory_cmds.aiml
+0,SPECIATION VAULT LIST,*,*,vault:list,observatory_cmds.aiml
+0,SPECIATION VAULT SHOW *,*,*,vault:show:<star/>,observatory_cmds.aiml
+0,ARQUIVAR NO VAULT *,*,*,vault:archive:<star/>,observatory_cmds.aiml
+0,ARQUIVAR VAULT *,*,*,vault:archive:<star/>,observatory_cmds.aiml
+0,LISTAR VAULT,*,*,vault:list,observatory_cmds.aiml
+0,MOSTRAR VAULT *,*,*,vault:show:<star/>,observatory_cmds.aiml
+0,APAGAR VAULT *,*,*,vault:delete:<star/>,observatory_cmds.aiml

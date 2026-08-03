@@ -65,6 +65,15 @@
 0,CONDICOES EM *,*,*,exoplanet:<star/>,voice_cmds.aiml
 0,ANALYZE THE PLANET *,*,*,exoplanet:<star/>,voice_cmds.aiml
 0,WHAT ARE CONDITIONS ON *,*,*,exoplanet:<star/>,voice_cmds.aiml
+0,SCAN PROFUNDO DO PLANETA *,*,*,deepscan:<star/>,voice_cmds.aiml
+0,SCAN PROFUNDO PLANETA *,*,*,deepscan:<star/>,voice_cmds.aiml
+0,FAZER DEEP SCAN *,*,*,deepscan:<star/>,voice_cmds.aiml
+0,COMPARAR PLANETA * COM *,*,*,compare:<star index="1"/>|<star index="2"/>,voice_cmds.aiml
+0,COMPARAR O PLANETA * COM *,*,*,compare:<star index="1"/>|<star index="2"/>,voice_cmds.aiml
+0,ARQUIVAR NO VAULT O PLANETA *,*,*,vault:archive:<star/>,voice_cmds.aiml
+0,ARQUIVAR PLANETA *,*,*,vault:archive:<star/>,voice_cmds.aiml
+0,LISTAR O VAULT,*,*,vault:list,voice_cmds.aiml
+0,MOSTRAR ENTRADA DO VAULT *,*,*,vault:show:<star/>,voice_cmds.aiml
 0,GUARDAR COLONIA *,*,*,<srai>SAVE COLONY <star/></srai>,voice_cmds.aiml
 0,LISTAR COLONIAS,*,*,<srai>LIST COLONIES</srai>,voice_cmds.aiml
 0,ARQUIVO COLONIAL,*,*,<srai>COLONY ARCHIVE</srai>,voice_cmds.aiml

@@ -130,4 +130,39 @@ public class MessageHandlerTest {
         assertNotNull(result);
         assertTrue(result.contains("COLONY ARCHIVE"), result);
     }
+
+    @Test
+    void testDirectVaultList() {
+        String result = messageHandler.processMessage("vault:list");
+        assertNotNull(result);
+        assertTrue(result.contains("SPECIATION VAULT"), result);
+    }
+
+    @Test
+    void testDirectCompareToken() {
+        String result = messageHandler.processMessage("compare:kepler-442 b|proxima centauri b");
+        assertNotNull(result);
+        assertTrue(result.contains("OBSERVATORY COMPARE")
+                        || result.toLowerCase().contains("nasa")
+                        || result.toLowerCase().contains("capit"),
+                result);
+    }
+
+    @Test
+    void testAimlDeepScanRouting() {
+        String result = messageHandler.processMessage("DEEP SCAN PLANET kepler-442 b");
+        assertNotNull(result);
+        assertTrue(result.contains("OBSERVATORY DEEP SCAN")
+                        || result.toLowerCase().contains("kepler")
+                        || result.toLowerCase().contains("nasa")
+                        || result.toLowerCase().contains("capit"),
+                result);
+    }
+
+    @Test
+    void testAimlVaultListRouting() {
+        String result = messageHandler.processMessage("VAULT LIST");
+        assertNotNull(result);
+        assertTrue(result.contains("SPECIATION VAULT") || result.contains("vault:"), result);
+    }
 }

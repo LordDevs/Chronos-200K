@@ -20,6 +20,7 @@ User utterance
 | `chronos_persona.aiml` | Identity, Commander Michel, LordDevs, protocols |
 | `sci_fi_simulation.aiml` | Jungle/ocean/Apex Protocol/speciation triggers |
 | `commands.aiml` | NASA exoplanet + EVOLVE routing |
+| `observatory_cmds.aiml` | Deep Scan / Compare / Speciation Vault |
 | `astronaut_cmds.aiml` | Ship telemetry |
 | `learning_mode.aiml` | Colony Archive (Learning Mode v2) |
 | `voice_cmds.aiml` | PT/EN spoken aliases |

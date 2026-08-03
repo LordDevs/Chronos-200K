@@ -75,10 +75,11 @@
         <template>
             PROTOCOLOS CHRONOS-200K:
             1) Exoplanet Logistics — ANALYZE OCEAN/JUNGLE PLANET ou ANALYZE PLANET &lt;nome&gt;.
-            2) Chronos Apex Protocol (CAP) — ACTIVATE APEX PROTOCOL.
-            3) Speciation — PREDICT EVOLUTION 200K.
-            4) Telemetria — SHIP STATUS.
-            5) Learning Mode v2 — LEARNING MODE SAVE/LIST/EVOLVE (perfis de terraformação).
+            2) Observatory Channel — DEEP SCAN PLANET &lt;nome&gt;, COMPARE PLANETS a AND b, VAULT ARCHIVE/LIST/SHOW.
+            3) Chronos Apex Protocol (CAP) — ACTIVATE APEX PROTOCOL.
+            4) Speciation — PREDICT EVOLUTION 200K.
+            5) Telemetria — SHIP STATUS.
+            6) Learning Mode v2 — LEARNING MODE SAVE/LIST/EVOLVE (perfis de terraformação).
         </template>
     </category>
 
