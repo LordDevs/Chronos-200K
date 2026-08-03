@@ -18,6 +18,15 @@
 0,VAULT LIST,*,*,vault:list,observatory_cmds.aiml
 0,VAULT SHOW *,*,*,vault:show:<star/>,observatory_cmds.aiml
 0,VAULT DELETE *,*,*,vault:delete:<star/>,observatory_cmds.aiml
+0,DEPLOY COLONY * SAVE,*,*,deploy:<star/>:save,observatory_cmds.aiml
+0,DEPLOY COLONY *,*,*,deploy:<star/>,observatory_cmds.aiml
+0,MISSION BRIEF *,*,*,deploy:<star/>,observatory_cmds.aiml
+0,MISSION BRIEF FOR *,*,*,deploy:<star/>,observatory_cmds.aiml
+0,DEPLOY *,*,*,deploy:<star/>,observatory_cmds.aiml
+0,DESDOBRAR COLONIA * SAVE,*,*,deploy:<star/>:save,observatory_cmds.aiml
+0,DESDOBRAR COLONIA *,*,*,deploy:<star/>,observatory_cmds.aiml
+0,BRIEFING DE MISSAO *,*,*,deploy:<star/>,observatory_cmds.aiml
+0,BRIEFING *,*,*,deploy:<star/>,observatory_cmds.aiml
 0,ARCHIVE TO VAULT *,*,*,vault:archive:<star/>,observatory_cmds.aiml
 0,SPECIATION VAULT LIST,*,*,vault:list,observatory_cmds.aiml
 0,SPECIATION VAULT SHOW *,*,*,vault:show:<star/>,observatory_cmds.aiml
