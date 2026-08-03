@@ -5,7 +5,9 @@ Estrutura do Project Board para o Chronos-200K.
 ## Colunas do Board
 
 ### 1. Core Setup
-Configuração base: deps, Tomcat/Program AB, estrutura `backend`/`frontend`, metadata do repo.
+Configuração base: deps, Tomcat/Program AB, estrutura do repo, metadata — **concluído** (ver [`docs/PHASE1.md`](../docs/PHASE1.md)).
+
+> Nota: paths on-disk permanecem `Backend/` / `Frontend/` (compatibilidade Java/`run.bat`). Lowercase fica para um refactor dedicado.
 
 ### 2. In Development
 Persona AIML Chronos, ExoplanetService (NASA TAP), EvolutionEngine, frontend HUD.

@@ -1,4 +1,17 @@
 {
   "description": "CHRONOS — Deep-Time AI Simulator for Human Evolution and Exoplanetary Adaptation",
-  "topics": ["java", "chatbot", "nasa", "exoplanets", "science", "aiml", "evolution", "chronos"]
+  "homepage": "https://lorddevs-lorddevs-projects.vercel.app",
+  "topics": [
+    "java",
+    "chatbot",
+    "nasa",
+    "exoplanets",
+    "science",
+    "aiml",
+    "evolution",
+    "chronos",
+    "space",
+    "simulation",
+    "lorddevs"
+  ]
 }

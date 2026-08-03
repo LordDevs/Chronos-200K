@@ -37,7 +37,7 @@ bash run.sh          # or run.bat on Windows
 
 Try in the HUD: `ANALYZE PLANET kepler-442 b` · `EVOLVE gravity 2g water 80 generations 1000` · `SHIP STATUS`.
 
-Docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/CHRONOS_LORE.md`](docs/CHRONOS_LORE.md) · [`docs/NASA_API.md`](docs/NASA_API.md) · [`docs/EVOLUTION_RULES.md`](docs/EVOLUTION_RULES.md) · [`docs/LEARNING_MODE.md`](docs/LEARNING_MODE.md) · [`docs/VOICE_IO.md`](docs/VOICE_IO.md)
+Docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/PHASE1.md`](docs/PHASE1.md) · [`docs/CHRONOS_LORE.md`](docs/CHRONOS_LORE.md) · [`docs/NASA_API.md`](docs/NASA_API.md) · [`docs/EVOLUTION_RULES.md`](docs/EVOLUTION_RULES.md) · [`docs/LEARNING_MODE.md`](docs/LEARNING_MODE.md) · [`docs/VOICE_IO.md`](docs/VOICE_IO.md)
 
 ---
 
