@@ -124,7 +124,38 @@ window.createVoiceChannel = function createVoiceChannel({ onTranscript, onStatus
   function stripHtml(html) {
     const el = document.createElement("div");
     el.innerHTML = html;
-    return (el.textContent || "").replace(/\s+/g, " ").trim();
+    return (el.textContent || "").trim();
+  }
+
+  /**
+   * Make HUD/AIML text speakable — drop symbols TTS would pronounce literally.
+   */
+  function sanitizeForSpeech(raw) {
+    let text = stripHtml(raw);
+    if (!text) return "";
+
+    text = text
+      .replace(/&nbsp;/gi, " ")
+      .replace(/&[a-z]+;/gi, " ")
+      // "SECTION // subtitle" → "SECTION: subtitle"
+      .replace(/\s*\/\/\s*/g, ": ")
+      // bullets and decorative dots
+      .replace(/[•·∙●▪▸►]/g, ". ")
+      // markdown / markup leftovers
+      .replace(/[*_`~#|\\]+/g, " ")
+      // arrows and inequalities often spoken oddly
+      .replace(/[←→↔⟵⟶]/g, " ")
+      .replace(/\s*[<>≤≥]\s*/g, " ")
+      // middle dots / em dashes as pauses
+      .replace(/\s*[–—]\s*/g, ". ")
+      // keep % and numbers; drop bare punctuation clusters
+      .replace(/[{}[\]()]+/g, " ")
+      .replace(/\s*[;:]+\s*/g, ". ")
+      .replace(/\.{2,}/g, ".")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    return text;
   }
 
   function pickVoice(utterLang) {
@@ -282,7 +313,7 @@ window.createVoiceChannel = function createVoiceChannel({ onTranscript, onStatus
     },
 
     speakPlain(htmlOrText) {
-      speak(stripHtml(htmlOrText));
+      speak(sanitizeForSpeech(htmlOrText));
     },
 
     stopSpeak() {

@@ -15,6 +15,7 @@ While listening, the HUD shows a helmet visor pulse (`body.helmet-listening`).
 ## Files
 
 - `Frontend/voice.js` — `normalizeVoiceTranscript()` + `createVoiceChannel()` with `setLang` / `toggleLang`
+- TTS runs `sanitizeForSpeech()` first (strips HTML, `//`, bullets `•·`, `*_\`#`, brackets) so the engine does not read markup aloud
 - `Frontend/script.js` — wires mic / TTS / lang → `sendToChronos()` → optional TTS
 - `Backend/ab/bots/chronos/aiml/voice_cmds.aiml` — PT/EN phrase aliases
 
@@ -74,7 +75,7 @@ Microphone → SpeechRecognition (pt-PT|en-US) → normalizeVoiceTranscript()
                                               ↓
                                     POST /api → voice_cmds.aiml → AIML + Java
                                               ↓
-                                    HTML reply → strip tags → speechSynthesis (same locale)
+                                    HTML reply → sanitizeForSpeech() → speechSynthesis (same locale)
 ```
 
 Future: push-to-talk hold, wake word.
