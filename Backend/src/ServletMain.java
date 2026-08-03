@@ -53,6 +53,12 @@ public class ServletMain {
         Tomcat.addServlet(ctx, "ColoniesAPI", "ColoniesAPI");
         ctx.addServletMappingDecoded("/api/colonies", "ColoniesAPI");
 
+        Tomcat.addServlet(ctx, "VaultAPI", "VaultAPI");
+        ctx.addServletMappingDecoded("/api/vault", "VaultAPI");
+
+        Tomcat.addServlet(ctx, "ObservatoryAPI", "ObservatoryAPI");
+        ctx.addServletMappingDecoded("/api/observatory", "ObservatoryAPI");
+
         tomcat.start();
 
         ServerContainer wsContainer = (ServerContainer) ctx.getServletContext()

@@ -93,6 +93,10 @@ window.normalizeVoiceTranscript = function normalizeVoiceTranscript(raw) {
     "vault archive": "VAULT ARCHIVE kepler-442 b",
     "listar vault": "VAULT LIST",
     "vault list": "VAULT LIST",
+    "deploy colony": "DEPLOY COLONY kepler-442 b",
+    "desdobrar colonia": "DEPLOY COLONY kepler-442 b",
+    "mission brief": "MISSION BRIEF kepler-442 b",
+    "briefing de missao": "MISSION BRIEF kepler-442 b",
   };
 
   if (exact[key]) return exact[key];

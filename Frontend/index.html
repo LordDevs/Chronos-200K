@@ -35,6 +35,7 @@
         <button type="button" data-cmd="DEEP SCAN PLANET kepler-442 b">Deep Scan</button>
         <button type="button" data-cmd="COMPARE PLANETS kepler-442 b AND proxima centauri b">Compare</button>
         <button type="button" data-cmd="VAULT ARCHIVE kepler-442 b">Vault Archive</button>
+        <button type="button" data-cmd="DEPLOY COLONY kepler-442 b SAVE">Deploy Colony</button>
         <button type="button" data-cmd="ANALYZE OCEAN PLANET">Ocean world</button>
         <button type="button" data-cmd="ACTIVATE APEX PROTOCOL">Apex Protocol</button>
         <button type="button" data-cmd="PREDICT EVOLUTION 200K">Evolução 200K</button>
@@ -51,6 +52,18 @@
     <section class="panel data-panel" aria-label="Exoplanet telemetry">
       <div class="panel-title">TELEMETRY // Exoplanets</div>
       <div id="planetCards" class="planet-cards"></div>
+    </section>
+
+    <section class="panel observatory-panel" aria-label="Observatory channel">
+      <div class="panel-title">OBSERVATORY // Channel</div>
+      <div class="obs-section">
+        <h4 class="obs-subtitle">Recent ops</h4>
+        <div id="obsRecent" class="obs-list"></div>
+      </div>
+      <div class="obs-section">
+        <h4 class="obs-subtitle">Speciation Vault</h4>
+        <div id="obsVault" class="obs-list"></div>
+      </div>
     </section>
 
     <section class="panel colony-panel" aria-label="Colony archive">

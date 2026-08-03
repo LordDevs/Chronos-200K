@@ -7,6 +7,8 @@
   const planetCards = document.getElementById("planetCards");
   const colonyCards = document.getElementById("colonyCards");
   const colonyForm = document.getElementById("colonyForm");
+  const obsRecent = document.getElementById("obsRecent");
+  const obsVault = document.getElementById("obsVault");
   const quickReplies = document.getElementById("quickReplies");
   const voiceBar = document.getElementById("voiceBar");
   const micBtn = document.getElementById("micBtn");
@@ -97,8 +99,22 @@
       ) {
         upsertPlanetCard(message, reply);
       }
-      if (lower.includes("learning mode") || lower.includes("colony archive") || reply.includes("COLONY ARCHIVE")) {
+      if (lower.includes("learning mode") || lower.includes("colony archive") || reply.includes("COLONY ARCHIVE")
+          || lower.includes("deploy colony") || lower.startsWith("deploy:") || reply.includes("MISSION BRIEF")) {
         refreshColonyCards();
+      }
+      if (
+        lower.includes("deep scan")
+        || lower.startsWith("deepscan:")
+        || lower.includes("compare")
+        || lower.includes("vault")
+        || lower.includes("deploy")
+        || lower.startsWith("mission brief")
+        || reply.includes("OBSERVATORY")
+        || reply.includes("SPECIATION VAULT")
+        || reply.includes("MISSION BRIEF")
+      ) {
+        refreshObservatoryPanel();
       }
     } catch (err) {
       typing.remove();
@@ -182,6 +198,96 @@
       console.warn("Colony refresh failed", err);
     }
   }
+
+  function escapeHtml(s) {
+    return String(s || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  async function refreshObservatoryPanel() {
+    await Promise.all([refreshObsRecent(), refreshObsVault()]);
+  }
+
+  async function refreshObsRecent() {
+    if (!obsRecent) return;
+    try {
+      const res = await fetch(`${window.location.origin}/api/observatory`);
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      const recent = data.recent || [];
+      obsRecent.innerHTML = "";
+      if (!recent.length) {
+        obsRecent.innerHTML = '<p class="obs-empty">Sem ops ainda. Use DEEP SCAN / COMPARE / DEPLOY.</p>';
+        return;
+      }
+      recent.slice(0, 8).forEach((op) => {
+        const card = document.createElement("article");
+        card.className = "obs-card";
+        const when = op.at ? new Date(op.at).toLocaleTimeString() : "";
+        card.innerHTML = `
+          <h3>${escapeHtml(op.type)} · ${escapeHtml(op.title)}</h3>
+          <div class="meta">${when}</div>
+          <div class="meta">${escapeHtml(op.summary)}</div>
+        `;
+        obsRecent.appendChild(card);
+      });
+    } catch (err) {
+      console.warn("Observatory recent refresh failed", err);
+    }
+  }
+
+  async function refreshObsVault() {
+    if (!obsVault) return;
+    try {
+      const res = await fetch(`${window.location.origin}/api/vault`);
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const entries = await res.json();
+      obsVault.innerHTML = "";
+      if (!entries.length) {
+        obsVault.innerHTML = '<p class="obs-empty">Vault vazio. Use VAULT ARCHIVE.</p>';
+        return;
+      }
+      entries.forEach((e) => {
+        const name = e.planetName || "";
+        const card = document.createElement("article");
+        card.className = "obs-card";
+        const surv = typeof e.survivalProbability === "number"
+          ? Math.round(e.survivalProbability * 100) + "%"
+          : "n/d";
+        const h3 = document.createElement("h3");
+        h3.textContent = name;
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        meta.textContent = `g=${Number(e.gravityG).toFixed(2)} · sobrevivência ${surv}`;
+        const actions = document.createElement("div");
+        actions.className = "actions";
+        [["Show", "vaultShow"], ["Deploy", "vaultDeploy"], ["Apagar", "vaultDelete"]].forEach(([label, key]) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = label;
+          btn.dataset[key] = name;
+          actions.appendChild(btn);
+        });
+        card.appendChild(h3);
+        card.appendChild(meta);
+        card.appendChild(actions);
+        obsVault.appendChild(card);
+      });
+    } catch (err) {
+      console.warn("Vault refresh failed", err);
+    }
+  }
+
+  obsVault?.addEventListener("click", (e) => {
+    const show = e.target.closest("button[data-vault-show]");
+    const deploy = e.target.closest("button[data-vault-deploy]");
+    const del = e.target.closest("button[data-vault-delete]");
+    if (show) sendToChronos(`VAULT SHOW ${show.dataset.vaultShow}`);
+    if (deploy) sendToChronos(`DEPLOY COLONY ${deploy.dataset.vaultDeploy} SAVE`);
+    if (del) sendToChronos(`VAULT DELETE ${del.dataset.vaultDelete}`);
+  });
 
   colonyCards?.addEventListener("click", (e) => {
     const evolve = e.target.closest("[data-evolve]");
@@ -271,6 +377,7 @@
 
   setupVoiceUi();
   refreshColonyCards();
+  refreshObservatoryPanel();
 
   appendMessage(
     "Sistema CHRONOS inicializado. Canal tático pronto. Use os atalhos, texto ou microfone (PT).",

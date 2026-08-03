@@ -25,15 +25,26 @@ public class ObservatoryService {
     private final NasaTapClient tap;
     private final EvolutionEngine evolutionEngine;
     private final SpeciationVaultStore vault;
+    private final ObservatoryActivityLog activity;
 
     public ObservatoryService() {
-        this(new NasaTapClient(), new EvolutionEngine(), SpeciationVaultStore.getInstance());
+        this(new NasaTapClient(), new EvolutionEngine(), SpeciationVaultStore.getInstance(),
+                ObservatoryActivityLog.getInstance());
     }
 
     public ObservatoryService(NasaTapClient tap, EvolutionEngine evolutionEngine, SpeciationVaultStore vault) {
+        this(tap, evolutionEngine, vault, ObservatoryActivityLog.getInstance());
+    }
+
+    public ObservatoryService(
+            NasaTapClient tap,
+            EvolutionEngine evolutionEngine,
+            SpeciationVaultStore vault,
+            ObservatoryActivityLog activity) {
         this.tap = tap != null ? tap : new NasaTapClient();
         this.evolutionEngine = evolutionEngine != null ? evolutionEngine : new EvolutionEngine();
         this.vault = vault != null ? vault : SpeciationVaultStore.getInstance();
+        this.activity = activity != null ? activity : ObservatoryActivityLog.getInstance();
     }
 
     public String deepScan(String planetQuery) {
@@ -41,7 +52,9 @@ public class ObservatoryService {
         if (row == null) {
             return notFound(planetQuery);
         }
-        return formatDeepScan(row);
+        String report = formatDeepScan(row);
+        activity.record("deepscan", NasaTapClient.optString(row, "pl_name"), report);
+        return report;
     }
 
     public String compare(String rawNames) {
@@ -108,7 +121,14 @@ public class ObservatoryService {
         }
         sb.append("</table>");
         sb.append("<br><em>★ = T_eq mais próximo de 255 K (Terra, proxy). g ≈ M/R² (estimado).</em>");
-        return sb.toString();
+        String report = sb.toString();
+        String titles = rows.stream()
+                .map(r -> NasaTapClient.optString(r, "pl_name"))
+                .filter(s -> !s.isBlank())
+                .reduce((a, b) -> a + " vs " + b)
+                .orElse("compare");
+        activity.record("compare", titles, report);
+        return report;
     }
 
     public String vaultArchive(String planetQuery) {
@@ -159,7 +179,9 @@ public class ObservatoryService {
                 .append(NasaTapClient.escape(name)).append("</strong><br>");
         sb.append(formatTapVsAssumed(entry));
         sb.append("<br>").append(report.toHtml());
-        return sb.toString();
+        String html = sb.toString();
+        activity.record("vault", name, html);
+        return html;
     }
 
     public String vaultList() {

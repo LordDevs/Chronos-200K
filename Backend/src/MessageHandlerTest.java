@@ -165,4 +165,14 @@ public class MessageHandlerTest {
         assertNotNull(result);
         assertTrue(result.contains("SPECIATION VAULT") || result.contains("vault:"), result);
     }
+
+    @Test
+    void testDirectDeployToken() {
+        String result = messageHandler.processMessage("deploy:kepler-442 b");
+        assertNotNull(result);
+        assertTrue(result.contains("MISSION BRIEF")
+                        || result.toLowerCase().contains("nasa")
+                        || result.toLowerCase().contains("capit"),
+                result);
+    }
 }

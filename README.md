@@ -27,6 +27,7 @@ Acting as a deep-space colony central computer, the system calculates astrophysi
 *   [x] **Adaptive Learning Mode v2 (Colony Archive):** Save / load terraforming profiles; evolve from named colonies; HUD panel + `GET /api/colonies`.
 *   [x] **Sub-vocal Speech Command Integration:** Web Speech API (MIC + TTS) on the tactical HUD; PT/EN locale toggle; same `/api` contract.
 *   [x] **Observatory Channel (NASA-anchored):** Deep Scan, Compare Planets, Speciation Vault — TAP-only fields + disclosed assumed vault inputs ([`docs/OBSERVATORY_CHANNEL.md`](docs/OBSERVATORY_CHANNEL.md)).
+*   [x] **Mission Brief / Colony Deploy + Observatory HUD:** `DEPLOY COLONY` from TAP → Colony Archive; panel + `GET /api/vault` / `GET /api/observatory`.
 
 ---
 
@@ -38,7 +39,7 @@ bash run.sh          # or run.bat on Windows
 # open http://localhost:8080/
 ```
 
-Try in the HUD: `ANALYZE PLANET kepler-442 b` · `DEEP SCAN PLANET kepler-442 b` · `COMPARE PLANETS kepler-442 b AND proxima centauri b` · `VAULT ARCHIVE kepler-442 b` · `SHIP STATUS`.
+Try in the HUD: `ANALYZE PLANET kepler-442 b` · `DEEP SCAN PLANET kepler-442 b` · `COMPARE PLANETS kepler-442 b AND proxima centauri b` · `VAULT ARCHIVE kepler-442 b` · `DEPLOY COLONY kepler-442 b SAVE` · `SHIP STATUS`.
 
 Docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/PHASE1.md`](docs/PHASE1.md) · [`docs/CHRONOS_LORE.md`](docs/CHRONOS_LORE.md) · [`docs/NASA_API.md`](docs/NASA_API.md) · [`docs/OBSERVATORY_CHANNEL.md`](docs/OBSERVATORY_CHANNEL.md) · [`docs/EVOLUTION_RULES.md`](docs/EVOLUTION_RULES.md) · [`docs/LEARNING_MODE.md`](docs/LEARNING_MODE.md) · [`docs/VOICE_IO.md`](docs/VOICE_IO.md)
 

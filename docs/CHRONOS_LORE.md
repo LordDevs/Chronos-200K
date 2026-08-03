@@ -8,7 +8,7 @@ Canonical naming for Chronos-200K. Avoid third-party IP; use LordDevs terms only
 |--------|-------------|---------|----------------|
 | Biomechanical enhancements | **Chronos Apex Protocol (CAP)** | `ACTIVATE APEX PROTOCOL` | `apex:` |
 | Exoplanet logistics | Exoplanet Logistics | `ANALYZE PLANET …` | `exoplanet:` |
-| Observatory Channel | Chronos Observatory Channel | `DEEP SCAN` / `COMPARE` / `VAULT …` | `deepscan:` / `compare:` / `vault:` |
+| Observatory Channel | Chronos Observatory Channel | `DEEP SCAN` / `COMPARE` / `VAULT …` / `DEPLOY COLONY` | `deepscan:` / `compare:` / `vault:` / `deploy:` |
 | Biome deployment | Ocean / Jungle Logistics | `ANALYZE OCEAN/JUNGLE PLANET` | `simulate:` |
 | Deep-time speciation | Speciation Forecast | `PREDICT EVOLUTION 200K` | `speciate:` |
 | NASA-anchored archive | **Speciation Vault** | `VAULT ARCHIVE/LIST/SHOW/DELETE` | `vault:` |
@@ -24,7 +24,7 @@ Spoken aliases (PT): "Ativar protocolo Apex", "Protocolo Apex Chronos", "Ativar 
 
 ## Observatory Channel
 
-Real-data observatory layer. All planet parameters come from NASA Exoplanet Archive TAP. Derived quantities allowed only: estimated surface gravity `g ≈ M/R²` and T_eq habitability proxy. Speciation Vault archives `EvolutionEngine` forecasts **seeded from TAP** (water/atmosphere assumed and disclosed). See [`OBSERVATORY_CHANNEL.md`](OBSERVATORY_CHANNEL.md).
+Real-data observatory layer. All planet parameters come from NASA Exoplanet Archive TAP. Derived quantities allowed only: estimated surface gravity `g ≈ M/R²` and T_eq habitability proxy. Speciation Vault archives `EvolutionEngine` forecasts **seeded from TAP** (water/atmosphere assumed and disclosed). **Mission Brief / Deploy** maps the same TAP seed into a suggested Colony Archive profile (`DEPLOY COLONY … [SAVE]`). See [`OBSERVATORY_CHANNEL.md`](OBSERVATORY_CHANNEL.md).
 
 ## Voice of the ship
 

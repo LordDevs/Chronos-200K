@@ -119,7 +119,7 @@ body {
   z-index: 2;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto;
   gap: 1.25rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -127,14 +127,15 @@ body {
 }
 
 .chat-panel {
-  grid-row: 1 / 3;
+  grid-row: 1 / 4;
   grid-column: 1;
 }
 
 .data-panel,
-.colony-panel {
+.colony-panel,
+.observatory-panel {
   grid-column: 2;
-  min-height: 280px;
+  min-height: 220px;
 }
 
 @media (max-width: 840px) {
@@ -144,7 +145,8 @@ body {
   }
   .chat-panel,
   .data-panel,
-  .colony-panel {
+  .colony-panel,
+  .observatory-panel {
     grid-row: auto;
     grid-column: auto;
   }
@@ -539,4 +541,80 @@ body.helmet-listening .voice-status {
   font-size: 0.75rem;
   color: var(--muted);
   padding: 0.5rem 0;
+}
+
+.observatory-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.obs-section {
+  padding: 0.5rem 1rem 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.obs-section:first-of-type {
+  border-top: none;
+}
+
+.obs-subtitle {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.obs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.obs-card {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.65rem;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.obs-card h3 {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  color: var(--cyan);
+}
+
+.obs-card .meta {
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.obs-card .actions {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.obs-card button {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+}
+
+.obs-card button:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.obs-empty {
+  font-size: 0.72rem;
+  color: var(--muted);
 }

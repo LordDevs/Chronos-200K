@@ -105,6 +105,52 @@
         <template>vault:delete:<star/></template>
     </category>
 
+    <!-- Mission Brief / Colony Deploy -->
+    <category>
+        <pattern>DEPLOY COLONY * SAVE</pattern>
+        <template>deploy:<star/>:save</template>
+    </category>
+
+    <category>
+        <pattern>DEPLOY COLONY *</pattern>
+        <template>deploy:<star/></template>
+    </category>
+
+    <category>
+        <pattern>MISSION BRIEF *</pattern>
+        <template>deploy:<star/></template>
+    </category>
+
+    <category>
+        <pattern>MISSION BRIEF FOR *</pattern>
+        <template>deploy:<star/></template>
+    </category>
+
+    <category>
+        <pattern>DEPLOY *</pattern>
+        <template>deploy:<star/></template>
+    </category>
+
+    <category>
+        <pattern>DESDOBRAR COLONIA * SAVE</pattern>
+        <template>deploy:<star/>:save</template>
+    </category>
+
+    <category>
+        <pattern>DESDOBRAR COLONIA *</pattern>
+        <template>deploy:<star/></template>
+    </category>
+
+    <category>
+        <pattern>BRIEFING DE MISSAO *</pattern>
+        <template>deploy:<star/></template>
+    </category>
+
+    <category>
+        <pattern>BRIEFING *</pattern>
+        <template>deploy:<star/></template>
+    </category>
+
     <category>
         <pattern>ARCHIVE TO VAULT *</pattern>
         <template>vault:archive:<star/></template>

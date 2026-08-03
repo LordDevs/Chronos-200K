@@ -8,6 +8,7 @@ public class MessageHandler {
     private final EvolutionEngine evolutionEngine = new EvolutionEngine();
     private final LearningModeService learningModeService = new LearningModeService();
     private final ObservatoryService observatoryService = new ObservatoryService();
+    private final MissionDeployService missionDeployService = new MissionDeployService();
     private final CommandRouter commandRouter = new CommandRouter();
 
     public MessageHandler() {
@@ -68,6 +69,9 @@ public class MessageHandler {
         }
         if (lower.startsWith("vault:")) {
             return observatoryService.handleVault(text.substring("vault:".length()).trim());
+        }
+        if (lower.startsWith("deploy:")) {
+            return missionDeployService.handle(text.substring("deploy:".length()).trim());
         }
         if (lower.startsWith("evolve:")) {
             return handleEvolve(text.substring("evolve:".length()).trim());

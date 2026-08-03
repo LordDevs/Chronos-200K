@@ -75,7 +75,7 @@
         <template>
             PROTOCOLOS CHRONOS-200K:
             1) Exoplanet Logistics — ANALYZE OCEAN/JUNGLE PLANET ou ANALYZE PLANET &lt;nome&gt;.
-            2) Observatory Channel — DEEP SCAN PLANET &lt;nome&gt;, COMPARE PLANETS a AND b, VAULT ARCHIVE/LIST/SHOW.
+            2) Observatory Channel — DEEP SCAN / COMPARE / VAULT / DEPLOY COLONY &lt;nome&gt; [SAVE].
             3) Chronos Apex Protocol (CAP) — ACTIVATE APEX PROTOCOL.
             4) Speciation — PREDICT EVOLUTION 200K.
             5) Telemetria — SHIP STATUS.
