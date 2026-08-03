@@ -7,7 +7,7 @@ Acting as a deep-space colony central computer, the system calculates astrophysi
 
 ---
 
-## 🌌 Key Scientific Pillars
+## Key Scientific Pillars
 
 *   **Astrobiology & Exoplanet Logistics:** Simulates human deployment on extreme celestial bodies (e.g., high-gravity super-Earths, ocean worlds, hyper-dense jungle planets).
 *   **Biomechanical Enhancements ("Chronos Apex Protocol" / CAP):** Generates architectural blueprints for synthetic organs, bio-engineered skeletal matrices, and nanorobotic neural networks required for environmental survival.
@@ -17,13 +17,15 @@ Acting as a deep-space colony central computer, the system calculates astrophysi
 
 ## Features & Development Checklist
 
-*   [x] **Core Text-Based Analytics Engine:** Processes complex environmental variables and outputs survival probability logs.
+*   [x] **Phase 1 Core Setup:** Migrated from LEARN; public Chronos-200K repo; LEARN archived with pointer stub ([`docs/PHASE1.md`](docs/PHASE1.md)).
+*   [x] **Core Rule-Based Analytics Engine:** Processes complex environmental variables and outputs survival probability logs.
 *   [x] **AIML Integration & Predefined Knowledge Bases:** Hybrid architecture combining rule-based astronomical parameters with generative AI flexibility.
 *   [x] **Sci-Fi Tactical UI Prototype:** Dark-mode, terminal-inspired interface reflecting a starship command deck or bio-informatics lab.
 *   [x] **ExoplanetService (NASA TAP):** Live lookup of mass, radius, equilibrium temperature, estimated gravity, habitability proxy.
+*   [x] **Sci-Fi Simulation + Chronos Apex Protocol (CAP):** Ocean/jungle logistics, biomechanical blueprints, 200K speciation forecasts.
 *   [x] **Adaptive Learning Mode v1 (EvolutionEngine):** Deterministic deep-time trait forecasting from gravity / water / atmosphere / generations.
 *   [x] **Adaptive Learning Mode v2 (Colony Archive):** Save / load terraforming profiles; evolve from named colonies; HUD panel + `GET /api/colonies`.
-*   [x] **Sub-vocal Speech Command Integration:** Web Speech API (MIC + TTS) on the tactical HUD; same `/api` contract.
+*   [x] **Sub-vocal Speech Command Integration:** Web Speech API (MIC + TTS) on the tactical HUD; PT/EN locale toggle; same `/api` contract.
 
 ---
 
@@ -57,7 +59,7 @@ Docs: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/PHASE1.md`](docs/
 
 ---
 
-## 👥 Core Architecture Team
+## Core Architecture Team
 
 Developed with passion and imagination by **LordDevs**:
 *   **Michel (LordDevs):** AI Solution Architect & Prompt Engineer
